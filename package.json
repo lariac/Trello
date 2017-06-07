@@ -1,0 +1,19 @@
+{
+  "name": "trello",
+  "version": "1.0.0",
+  "description": "Final project for the Immersive Course of BrainStation that consists of a clone of the Trello web app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lariac/Trello.git"
+  },
+  "author": "Larissa Arroyo Castillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lariac/Trello/issues"
+  },
+  "homepage": "https://github.com/lariac/Trello#readme"
+}
