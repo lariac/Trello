@@ -6,9 +6,7 @@ const cardSchema = new mongoose.Schema({
     comment:{
         type: String
     },
-    idMember:{
-        type: Array
-    },
+    idMembers: [{ type: mongoose.Schema.ObjectId, ref: 'Member'}],
     dueDate:{
         type: Date
     },
@@ -17,7 +15,9 @@ const cardSchema = new mongoose.Schema({
     },
     labels:{
         type: Array
-    }
+    },
+    idBoard: { type: mongoose.Schema.ObjectId, ref: 'Board' },
+    idList: { type: mongoose.Schema.ObjectId, ref: 'List' } 
 });
 
 module.exports = mongoose.model('Card', cardSchema);

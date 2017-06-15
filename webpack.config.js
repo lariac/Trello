@@ -4,10 +4,11 @@ const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 
+
 module.exports = {
   context: path.join(__dirname, '/src'),
   entry: {
-    javascript: './Components/App/App.jsx',
+    javascript: './components/App/App.jsx'
   },
   devtool: 'source-map',
   output: {
@@ -51,12 +52,13 @@ module.exports = {
         options: {
           limit: 25000,
         },
-      }
+      },
+
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.tpl.ejs'
+      template: 'index.tpl.ejs',
     }),
     new webpack.LoaderOptionsPlugin({
       options: {

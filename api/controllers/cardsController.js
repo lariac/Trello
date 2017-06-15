@@ -1,9 +1,9 @@
 const mongoose = require('mongoose'); //Import mongoose
-const Board = mongoose.model('board'); //Import the board's model
+const Card = require('../models/Card'); //Import the board's model
 
-//Get all the boards 
-function getBoards(req, res) {
-  Board.find().exec(function (err, data) {
+//Get all the cards
+function getCards(req, res) {
+  Card.find().exec(function (err, data) {
     if (!err) {
       res.status(200);
       res.json(data);
@@ -15,13 +15,13 @@ function getBoards(req, res) {
   });
 };
 
-//Add a board 
-function createBoard(req, res) {
-  const board = new Board(req.body);
-  board.save(err => {
+//Add a card
+function createCard(req, res) {
+  const card = new Card(req.body);
+  card.save(err => {
     if (!err) {
       res.status(201);
-      res.json(note);
+      res.json(card);
     }
     else {
       res.status(404);
@@ -31,9 +31,9 @@ function createBoard(req, res) {
 }
 
 
-//Update a board 
-function updateBoard(req, res) {
-  Board.findOneAndUpdate({ _id: req.body._id }, req.body, (err, data) => {
+//Update a card
+function updateCard(req, res) {
+  Card.findOneAndUpdate({ _id: req.body._id }, req.body, (err, data) => {
     if (!err) {
       res.status(201);
       res.json(data);
@@ -45,9 +45,9 @@ function updateBoard(req, res) {
   });
 }
 
-//Delete a board
-function deleteBoard(req, res) {
-  Board.findByIdAndRemove({ _id: req.body._id }, req.body, (err, data) => {
+//Delete a card
+function deleteCard(req, res) {
+  Card.findByIdAndRemove({ _id: req.body._id }, req.body, (err, data) => {
     if (!err) {
       res.status(204);
       res.json(data);
@@ -60,10 +60,11 @@ function deleteBoard(req, res) {
 }
 
 const actions = {
-  getBoards,
-  createBoard,
-  updateBoard,
-  deleteBoard
-}
+  getCards,
+  createCard,
+  updateCard,
+  deleteCard
+}  
+
 
 module.exports = actions;

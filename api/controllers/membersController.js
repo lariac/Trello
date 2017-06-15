@@ -1,10 +1,10 @@
 const mongoose = require('mongoose'); //Import mongoose
-const Member = mongoose.model('member'); //Import the board's model
+const Member = require('../models/Member'); //Import the board's model
 
 //Get a specific member
 function getMember(req, res) {
-  console.log("Esto tiene el request: " + req.params );
-  Member.findById(req.params._id, function (err, data){
+  console.log("Esto tiene el request: " + req.params);
+  Member.findById(req.params._id).exec(function (err, data) {
     if (!err) {
       res.status(200);
       res.json(data);
@@ -14,11 +14,13 @@ function getMember(req, res) {
       res.json(err);
     }
   });
+}
 
 //Add a member 
 function createMember(req, res) {
+  console.log("body es: " + req.body.name);
   const member = new Member(req.body);
-  Member.save(err => {
+  member.save(err => {
     if (!err) {
       res.status(201);
       res.json(member);
@@ -44,19 +46,38 @@ function updateMember(req, res) {
   });
 }
 
-//Delete a List
+//Delete a member
 function deleteMember(req, res) {
-  Member.findByIdAndRemove({ _id: req.body._id }, req.body, (err, data) => {
-    if (!err) {
-      res.status(204);
-      res.json(data);
+  Member.findOne({ _id: req.params._id }, function (err, member) {
+    if (!err) {     
+      console.log("member eliminado: " + member);
+      res.json(member);
+      member.remove();
+      res.status(201);  
     }
     else {
-      res.status(500);
+      res.status(404);
       res.json(err);
     }
+
   });
+
+
+  /* console.log("el miembro a eliminar es: " + req.params._id);
+   Member.findByIdAndRemove({ _id: req.params._id }).exec((err, data) => {
+     if (!err) {
+       res.status(204);
+       res.json(data);
+     }
+     else {
+       res.status(500);
+       res.json(err);
+     } 
+   }); */
 }
+
+
+
 
 const actions = {
   getMember,

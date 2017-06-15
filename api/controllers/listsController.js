@@ -1,10 +1,9 @@
 const mongoose = require('mongoose'); //Import mongoose
-const List = mongoose.model('card'); //Import the board's model
+const List = require('../models/List'); //Import the board's model
 
 //Get all the lists from a specific board
-function getLists(req, res) {
-  console.log("Esto tiene el request: " + req.params );
-  List.find().exec(function (err, data) {
+function getListById(req, res) {
+  List.findById({ _id: req.params._id }).populate('idBoard, idCards').exec((err, data) => {
     if (!err) {
       res.status(200);
       res.json(data);
@@ -16,10 +15,11 @@ function getLists(req, res) {
   });
 };
 
+
 //Add a board 
 function createList(req, res) {
   const list = new List(req.body);
-  List.save(err => {
+  list.save(err => {
     if (!err) {
       res.status(201);
       res.json(list);
@@ -47,20 +47,33 @@ function updateList(req, res) {
 
 //Delete a List
 function deleteList(req, res) {
-  List.findByIdAndRemove({ _id: req.body._id }, req.body, (err, data) => {
+  /* Board.findByIdAndRemove({ _id: req.body._id }, req.body, (err, data) => {
+     if (!err) {
+       res.status(204);
+       res.json(data);
+     }
+     else {
+       res.status(500);
+       res.json(err);
+     }
+   }); */
+
+  List.findById({ _id: req.params._id }, function (err, list) {
     if (!err) {
-      res.status(204);
-      res.json(data);
+      console.log("list a eliminar: " + list);
+      res.json(list);
+      list.remove();
+      res.status(201);
     }
     else {
-      res.status(500);
+      res.status(404);
       res.json(err);
     }
   });
 }
 
 const actions = {
-  getLists,
+  getListById,
   createList,
   updateList,
   deleteList
