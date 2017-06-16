@@ -1,29 +1,143 @@
-h1{
-    font-size: 1.777em;
-    line-height: 1.2em;
-    margin-top: 1.6em;
-    font-weight: bold;
-    margin-right: 0px;
-    margin-bottom: 0.67em;
-    margin-left: 0px;
-}
-
-
-section{
-    overflow: hidden;
-    padding: 0 1em;
-    word-wrap: break-word;
-}
-
-.quiet{
-    color: #999;
-}
-
-.section-wrapper {
-    max-width: 540px;
-    margin: 0 auto;
-}
-
 html{
-    font-family: "jaf-facitweb","Helvetica Neue", Arial , sans-serif;
+    font-size: 16px;
 }
+
+.loginWrapper{
+  //  margin: 0rem 3.8125rem;
+      margin: 0rem 4.69vw;
+    &__trelloLogo {
+        img{
+      //  margin-top: 8.625rem;
+        margin-top: 16.65vh;
+       // width: 8.9375rem;
+        width: 26,88vw;
+       // height: 2.5625rem;
+        height: 4.95vh;
+        }
+    }
+}
+
+.col-md-5.noPadding{
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.userInformation{
+  //  margin-top: 8.75rem;
+        margin-top: 16.89vh;
+   
+    &__userName{
+        margin-top: 0rem;
+        display: block;  
+        //height: 2.8125rem;
+        height: 5.43vh;
+        background: url('../../img/username.svg') no-repeat left center;
+        background-size: 1.09375vw 4.22195416vh;
+       // background-position: 3.125vw; 
+        background-position: 1.640625vw; 
+        padding-left: 4.21875vw;
+
+
+     //   width: 32.1875vw;
+    // background-image:url('../../img/password.svg'); 
+    //    background-repeat: no-repeat; 
+  //  background-position: 2px 3px;
+    };
+    &__password{
+        margin-top:1.875rem;
+        //margin-top:3.62vh;
+        display: block;
+       // height: 2.8125rem;
+        height: 5.43vh;
+      //  width: 30.703125vw;
+
+        background: url('../../img/password.svg') no-repeat left center;
+        background-size: 1.09375vw 4.22195416vh;
+       // background-position: 3.125vw; 
+        background-position: 1.640625vw; 
+        padding-left: 4.21875vw;
+    };
+    &__logIn{
+        margin-top:1.875rem;
+       // margin-top:3.62vh;
+        display: block;
+        width:100%;
+      //  height: 3.125rem;
+        height: 6.03vh;
+      //  width: 30.703125vw;
+       box-shadow: -5px 15px 5px 0px #E6E6E6;
+    }
+}
+
+.userNameInput{
+    margin-top: 0rem;
+}
+
+
+.homeImage{
+  //  background-image: url('../../img/Home.png');
+   // background-repeat: no-repeat;
+ //   height: 2vh;
+ //   width: 2vw;
+ //   background-size: 700vw 500vh;
+height: 100vh;
+width: 100%;
+}
+
+.divisionLine{
+ /*   border-left: 1rem solid black;
+    height: 0.1rem;
+    margin-top: 5rem; */
+    stroke: #82868b;
+    stroke-width:0.12062727vh;
+} 
+
+.font{
+    //margin-top: 0.5rem;
+    //margin: 0 2.03125vw;
+ //   margin:2.33750156vw; 
+ //   width: 3.13749688vw;
+ //width: 2.4063375vw;
+
+
+ width: 2.4063375vw;
+ text-align:center;
+ //margin: 0 2.23445625vw;
+  margin-top: 7.35826297vh;
+}
+
+.division1{
+   // width: 14.6875vw;
+    width: 12.65612vw;
+    height: 6.08vh; //CALCULADO 
+    margin-right:  2.23445625vw;
+}
+
+.division2{
+   // width: 14.6875vw;
+    width: 12.65612vw;
+    height: 6.08vh; //CALCULADO 
+    margin-left: 2.23445625vw;
+}
+
+
+.newAccount{
+    color: #4e88ff;
+    font-size: 1.5681544vh;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 7.84077201vh;
+}
+
+.newAccount:hover{
+    //color: pink;
+}
+
+.col-md-7.noPadding{
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+
+
+
