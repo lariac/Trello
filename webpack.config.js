@@ -54,6 +54,14 @@ module.exports = {
         },
       },
 
+      {
+        test: /bootstrap\/dist\/js\/umd\//,
+        use: 'imports-loader?jQuery=jquery'
+      },
+
+      { test: /bootstrap-sass[/]assets[/]javascripts[/]/, loader: 'imports?jQuery=jquery' }
+
+
     ],
   },
   plugins: [
@@ -70,5 +78,9 @@ module.exports = {
         ],
       },
     }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ],
 };

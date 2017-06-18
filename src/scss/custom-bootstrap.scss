@@ -1,0 +1,113 @@
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+.navbar{
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #ffffff;
+    border: none;
+    min-height: 4.5rem;
+    max-width: 100vw;
+    height: 4.5rem;
+  // min-height: 8.66425993vh;
+ //  height: 8.66425993vh;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+    color:black;
+}
+
+.navbar-inverse .navbar-brand{
+    color:black;
+}
+
+.navbar-inverse .navbar-brand:hover{
+    color:black;
+    background-color: none;
+}
+
+
+.navbar-inverse .navbar-nav > li:hover > a{
+    color:black;
+    background-color: grey;
+}
+
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  color:black;
+    background-color: grey;
+}
+
+.collapse{
+  //  height:10rem;
+}
+
+.navbar-collapse{
+     padding-right: 0rem; 
+     padding-left: 0rem; 
+}
+
+.navbar-brand {
+  padding: 0 0.9375rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  background-color: red;
+}
+
+.navbar-toggle {
+  /* (4.5rem - button height: 2.125rem) / 2 = 1.1875rem */
+    margin-top: 1.1875rem;
+    margin-bottom: 1.1875rem;
+ // padding: 9px 10px !important;
+}
+
+.label{
+    margin-bottom: 0rem;
+}
+
+
+.navbar-inverse .navbar-form {
+    border: none;
+   // border-color: transparent;
+}
+
+@media (min-width: 768px) {
+    
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+}
+
+.navbar-form{
+    padding: 0rem;
+    margin: 0rem;
+}
+
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: black;
+}
+
+.container-fluid{
+ //   padding-left: 0rem; 
+  //  padding-right: 0rem; 
+}
+
+
+@media(max-width: 1000px) {
+  .nav-collapse, .nav-collapse.collapse {
+   overflow: visible !important;
+   height: auto !important;
+ }
+ .navbar .btn-navbar {
+   display:none;
+ }
+
+ .dropdown-menu li:hover .sub-menu {
+   display: block !important;
+   visibility: visible !important;
+ }
+}
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import bootstrapStyle from '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+import customBootstrap from '../../scss/custom-bootstrap.scss'
 import Routes from '../Routes/Routes'
 
 class App extends React.Component {
