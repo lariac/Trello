@@ -150,6 +150,13 @@
     display: inline;
 }
 
+.navbar-form-display{
+    display: inline;
+}
+
+.navbar-form-collapse-display{
+    display: none;
+}
 
 .navStyle{
     height:4.5rem;
@@ -319,6 +326,7 @@
 }
 
 
+
 }
 
 .input-group-btn:last-child > .form-control-style__button{
@@ -335,6 +343,21 @@
      
 }
 
+.navbar-brand-logo{
+    height: 4rem;
+    width: 4rem;
+    text-align: center;
+    margin-left: 2.5rem;
+   // margin-right: 3rem;
+   margin-right: 2.5rem;
+   vertical-align: center;
+
+}
+
+.navbar-brand-logo-display{
+   display:none;
+}
+
 
 
 
@@ -342,17 +365,28 @@
 
 @media(max-width: 768px) {
 
-  .navbar-nav > li{
-
-    margin-left: 4rem;
+ .navbar-form .input-group > .form-control {
+   // width: 95%;
+     width: 30vw;
   }
 
   
 
-   .navbar-nav > li > form{
+   .navbar-nav > li > .navbar-form{
 
-    margin-left: -1.5rem;
-    margin-right: 10rem;
+    text-align: center;
+   // margin-left: calc((100vw - 12rem)/2);
+  //  margin-left: 4.75rem;
+   
+
+   // margin-left: 10rem;
+
+ /*   margin-left: -1.5rem;
+    margin-left: 30vw;
+    margin-right: 10rem; */
+
+
+
    // width: 5rem;
     //width: 90vw;
     //margin-left: -20rem;
@@ -362,22 +396,71 @@
     display: none;
 }
 
+.navbar-form-display{
+    display: none;
+}
+
+.navbar-form-collapse-display{
+    display: block;
+}
+
+
 .navbar-content-division-display{
     display: block;
 }
 
 .navbar-collapse-background{
-    background-color: purple;
+
+   background-color: #f5f8ff;
+ // background-color: purple;
    // height: 91.3357401vh;
    height: calc(100vh - 4.5rem);
-  
+   width: 100vw;
+   text-align: center;
 }
 
-.navbar-form .input-group > .form-control {
-   width: 100%;
- //  width: 2vw;
-     
+.form-control-style-collapse{
+    border: none;
+    background-color: transparent;
+    margin-left: calc((100vw - 12rem) / 2);
+   //margin-left: 54.8571420vw;
 }
+
+
+
+.navbar-search{
+        background: linear-gradient(to bottom, rgba(255,255,255,0),rgba(255,255,255,0)), url('../../img/searchIconCollapse.svg') no-repeat left center; 
+        background-size: 0.875rem 2.188rem; 
+        background-position: 1.313rem;
+        padding-left: 3.375rem;
+        width: 12rem;
+        margin-left: 0rem;
+     //   margin-left: calc((100vw - 12rem));
+    //    margin-left: 4.938rem;
+        border-bottom: 1px solid #BDBDBD;
+}
+
+.input-group{
+
+  margin-left: calc( (100vw - 53.3333333vw) / 2 );
+ //margin-left: 10vw;
+// margin-left: 28.280543vw;
+// margin-left: 100vw;
+}
+
+.navbar-brand-logo-display{
+   display:inline;
+}
+
+.navbar-button{
+
+    margin-right: 0rem;
+    &__bell{
+        margin-right: 0rem;
+    }
+}
+
+
 
 
   

@@ -6,11 +6,10 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-          <BoardNavbar/>
+        <BoardNavbar/>
         <main className="content">
           
-       <div> HOOOLA
-       </div>
+        HOLA
           
         </main>
       </div>

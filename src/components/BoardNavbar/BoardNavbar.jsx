@@ -19,13 +19,16 @@ class BoardNavbar extends React.Component {
 
           <img src={require('../../img/board-Icon.svg')} className="navbar-brand-board-logo" />
           <label className="navbar-brand-board-title">Boards</label>
+
+          <img src={require("../../img/Trello-logo.svg")} className="navbar-brand-logo navbar-brand-logo-display" />
+
         </div>
         <div className="collapse navbar-collapse navbar-collapse-background" id="myNavbar">
           <ul className="nav navbar-nav">
 
 
             <li>
-              <form className="navbar-form navbar-right pull-right" role="search">
+              <form className="navbar-form navbar-form-display" role="search">
                 <div className="input-group">
                   <input type="text" className="form-control form-control-style navbar-search" placeholder="Search" />
                   <span className="input-group-btn">
@@ -36,6 +39,17 @@ class BoardNavbar extends React.Component {
                 </div>
               </form>
             </li>
+
+            <li>
+  
+              <form className="navbar-form  navbar-form-collapse-display" role="search">
+                <div className="input-group">
+                  <input type="text" className="form-control-style-collapse navbar-search" placeholder="Search..."/>
+                </div>
+              </form>
+
+            </li>
+
 
             <hr className="navbar-content-division navbar-content-division-display" />
 
@@ -70,6 +84,8 @@ class BoardNavbar extends React.Component {
                 </ul>
               </div>
             </li>
+
+            <hr className="navbar-content-division navbar-content-division-display" />
 
 
           </ul>
