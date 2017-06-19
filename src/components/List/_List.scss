@@ -1,0 +1,126 @@
+.list-panel{
+    width: 17.3rem;
+    margin-right: 1.25rem;
+    margin-top: 4.75rem;
+   // height: 29.88rem;
+    height: 57.521059vh;
+
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+
+    box-shadow: 0 0 1.125rem rgba(10, 23, 48, 0.05);
+    background-color: #ffffff;
+    border-radius: 0rem;
+
+    padding: 0rem;
+    overflow-x:auto;
+
+&__button{
+    background-color: transparent;
+    padding: 0rem;
+    border: 0;
+    background-size:  1.25rem 1.25rem;
+    padding: 0rem;
+    border: none;
+    width: 1.25rem;
+    height:1.25rem;
+  //  margin-top: 90.5857741vh;
+    margin-bottom: 1.563rem;
+    margin-left: 1.313rem;
+    margin-right: 14.56rem;
+ 
+}
+    
+    &__add{
+        background: url('../../img/add-Icon.svg') no-repeat left center; 
+    }
+
+}
+
+.list-panel-add-card{
+   -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto; 
+
+    margin-top: 3rem;
+
+
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start; 
+
+    &__button{
+        background-color: transparent;
+        padding: 0rem;
+        border: 0;
+        background-size:  1.25rem 1.25rem;
+        padding: 0rem;
+        border: none;
+        width: 1.25rem;
+        height:1.25rem;
+    //  margin-top: 90.5857741vh;
+        margin-bottom: 1.563rem;
+        margin-left: 1.313rem;
+        margin-right: 0.625rem;
+        align-self: flex-end;
+
+
+      
+    }
+    &__font{
+        color: #3f3f3f;
+        font-family: "Open Sans" sans-serif;
+        font-size: 0.75rem;
+        font-weight: 400;
+        line-height: 1.188rem;
+        margin-bottom: 1.5rem;
+        align-self: flex-end;
+    }
+
+}
+
+
+.list-panel-button{
+   
+  
+}
+
+
+
+.list-title{
+    color: #2c2b2c;
+    font-family: "Helvetica Neue" sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.688rem;
+    margin-left: 1.375rem;
+    margin-top: 1.875rem;
+    margin-bottom: 1.688rem;
+}
+
+
+
+
+
+

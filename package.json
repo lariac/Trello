@@ -36,6 +36,7 @@
     "concurrently": "^3.4.0",
     "css-loader": "^0.28.4",
     "eslint": "^4.0.0",
+    "eslint-config-airbnb": "^15.0.1",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-react": "^7.1.0",
     "file-loader": "^0.11.2",
