@@ -1,5 +1,31 @@
 const mongoose = require('mongoose'); //Import mongoose
 const Member = require('../models/Member'); //Import the board's model
+const validateInputData = require('../shared/validations/signUpValidation')
+const encryptTool = require('bcrypt');
+
+function validateDataUniqueness(data, validations) {
+  var errors = validations(data);
+
+  var self = this;
+  var promiseEmailUniqueness = new Promise((resolve, reject) => {
+    Member.where({ email: data.email }).exec((err, member) => {
+
+      if (member.length > 0) {
+        console.log("errors!!" + errors);
+        errors.email = "*Email already in use by another account";
+        errors.valid = false;
+        resolve(errors);
+      }
+      else {
+        resolve(errors);
+      }
+    })
+  });
+
+  return Promise.all([promiseEmailUniqueness]).then((errors) => {
+    return errors;
+  });
+}
 
 //Get a specific member
 function getMember(req, res) {
@@ -16,19 +42,42 @@ function getMember(req, res) {
   });
 }
 
-//Add a member 
-function createMember(req, res) {
-  console.log("body es: " + req.body.name);
-  const member = new Member(req.body);
-  member.save(err => {
-    if (!err) {
-      res.status(201);
+function getMemberByEmail(req, res) {
+  Member.where({ email: req.params.email }).exec((err, member) => {
+    if(!err){
       res.json(member);
     }
-    else {
-      res.status(404);
+    else{
       res.json(err);
     }
+  });
+}
+
+
+//Add a member 
+function createMember(req, res) {
+  validateDataUniqueness(req.body, validateInputData).then((validationResult) => {
+    if (validationResult[0].valid === false) {
+      res.status(400);
+      res.json(validationResult[0]);
+    }
+    else {
+      console.log("Estoy en el else :D");
+      const memberData = req.body;
+      memberData.password = encryptTool.hashSync(memberData.password, 12);
+      const member = new Member(memberData);
+      member.save(err => {
+        if (!err) {
+          res.status(201);
+          res.json(member);
+        }
+        else {
+          res.status(404);
+          res.json(err);
+        }
+      });
+    }
+
   });
 }
 
@@ -49,11 +98,11 @@ function updateMember(req, res) {
 //Delete a member
 function deleteMember(req, res) {
   Member.findOne({ _id: req.params._id }, function (err, member) {
-    if (!err) {     
+    if (!err) {
       console.log("member eliminado: " + member);
       res.json(member);
       member.remove();
-      res.status(201);  
+      res.status(201);
     }
     else {
       res.status(404);
@@ -81,6 +130,7 @@ function deleteMember(req, res) {
 
 const actions = {
   getMember,
+  getMemberByEmail,
   createMember,
   updateMember,
   deleteMember

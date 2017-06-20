@@ -126,13 +126,21 @@
 .navbar-collapse.in {
      //overflow: hidden;
      overflow: auto;
-    // z-index: 2;
+     position: relative;
+     z-index: 1;
+}
+
+.navbar-collapse{
+   
+     position: relative;
+    z-index: 1;
 }
 
 .nav > li {
     position: relative;
     display: block;
     height: auto;
+    z-index: 5;
 
    // width: 104vw;
   // margin-left: calc( (100vw - 50vw) / 2);

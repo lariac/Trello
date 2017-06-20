@@ -36,6 +36,7 @@ html{
     margin-top: 8.75rem;
   //      margin-top: 16.89vh;
    
+
     &__userName{
         margin-top: 0rem;
         display: block;  
@@ -46,6 +47,22 @@ html{
         padding-left: 3.375rem;
         
 
+        color: #9fa3a7;
+        font-family: "Helvetica Neue" sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.688rem;
+
+    };
+    &__email{
+        margin-top:1.875rem;
+        display: block;  
+        height: 2.8125rem;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('../../img/username.svg') no-repeat left center; 
+        background-size: 0.875rem 2.188rem; 
+        background-position: 1.313rem;
+        padding-left: 3.375rem;
+        
         color: #9fa3a7;
         font-family: "Helvetica Neue" sans-serif;
         font-size: 1rem;

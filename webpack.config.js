@@ -12,8 +12,9 @@ module.exports = {
   },
   devtool: 'source-map',
   output: {
-    filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
+    filename: '[hash].bundle.js',
+    sourceMapFilename: '[hash].map'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],

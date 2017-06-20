@@ -8717,23 +8717,43 @@ var SignUpPanel = function (_React$Component) {
                   onChange: this.handleOnChange,
                   placeholder: 'Name',
                   value: this.props.userName }),
+                this.props.errors.name && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'span',
+                  { className: 'help-block' },
+                  ' ',
+                  this.props.errors.name,
+                  ' '
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
                   className: 'userInformation__email form-control',
                   name: 'userEmail',
                   placeholder: 'Email',
                   onChange: this.handleOnChange,
                   value: this.props.userEmail }),
+                this.props.errors.email && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'span',
+                  { className: 'help-block' },
+                  ' ',
+                  this.props.errors.email,
+                  ' '
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
                   type: 'password',
                   className: 'userInformation__password form-control',
                   name: 'userPassword',
                   placeholder: 'Password',
                   onChange: this.handleOnChange,
-                  value: this.props.userPassword
-                }),
+                  value: this.props.userPassword }),
+                this.props.errors.password && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'span',
+                  { className: 'help-block' },
+                  ' ',
+                  this.props.errors.password,
+                  ' '
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'button',
-                  { className: 'btn btn-primary userInformation__logIn fontLogin' },
+                  { className: 'btn btn-primary userInformation__logIn fontLogin', disabled: this.props.isLoading },
                   'Log In'
                 )
               )
@@ -15494,6 +15514,8 @@ var LoginPanelContainer = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SignUpPanel_SignUpPanel__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_actionCreators__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prop_types__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_prop_types__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -15501,6 +15523,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -15521,6 +15544,11 @@ var SignUpPanelContainer = function (_React$Component) {
       userPassword: ""
     };
     _this.onChange = _this.onChange.bind(_this);
+    _this.setErrors = _this.setErrors.bind(_this);
+    SignUpPanelContainer.propTypes = {
+      isLoading: __WEBPACK_IMPORTED_MODULE_4_prop_types__["bool"],
+      errors: __WEBPACK_IMPORTED_MODULE_4_prop_types__["object"]
+    };
     return _this;
   }
 
@@ -15530,21 +15558,40 @@ var SignUpPanelContainer = function (_React$Component) {
     console.log("esta cambiando este: " + e.target.name);
     this.setState((_setState = {}, _setState[e.target.name] = e.target.value, _setState));
   };
+
+  SignUpPanelContainer.prototype.setErrors = function setErrors(data) {
+    console.log("estos son los errores" + data);
+  };
   /*  signUpSubmitAction(userAccountInformation){
       console.log(userAccountInformation);
     }  */
 
 
   SignUpPanelContainer.prototype.render = function render() {
-    var signUpSubmit = this.props.signUpSubmit;
+    var _props = this.props,
+        signUpSubmit = _props.signUpSubmit,
+        errors = _props.errors,
+        isLoading = _props.isLoading;
 
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_SignUpPanel_SignUpPanel__["a" /* default */], _extends({ onChange: this.onChange, signUpSubmit: signUpSubmit }, this.state));
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_SignUpPanel_SignUpPanel__["a" /* default */], _extends({
+      onChange: this.onChange,
+      signUpSubmit: signUpSubmit,
+      errors: errors,
+      isLoading: isLoading
+    }, this.state));
   };
 
   return SignUpPanelContainer;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
 ;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    errors: state.errorsAccount,
+    isLoading: state.isLoading
+  };
+};
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
@@ -15554,7 +15601,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(null, mapDispatchToProps)(SignUpPanelContainer));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(SignUpPanelContainer));
 
 /***/ }),
 /* 162 */
@@ -15581,12 +15628,13 @@ function signUpSubmit(userAccountInformation) {
       console.log("insercion exitosaaa");
       dispatch({
         type: __WEBPACK_IMPORTED_MODULE_1__actions__["b" /* SIGNUPSUBMIT_SUCCESS */]
-        //bretes: res.data 
       });
     }).catch(function (error) {
+      console.log(error.response.data.name);
       dispatch({
-        type: __WEBPACK_IMPORTED_MODULE_1__actions__["b" /* SIGNUPSUBMIT_SUCCESS */],
-        error: error
+        type: __WEBPACK_IMPORTED_MODULE_1__actions__["c" /* SIGNUPSUBMIT_FAILURE */],
+        // error 
+        errorsAccount: error.response.data
       });
     });
   };
@@ -15602,30 +15650,37 @@ function signUpSubmit(userAccountInformation) {
 
 
 var initialState = {
-  boards: [],
-  lists: [],
-  cards: [],
-  member: ""
+  boards: {},
+  lists: {},
+  cards: {},
+  member: "",
+  errorsAccount: {},
+  isLoading: false
 };
 
 function Trello() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
 
+  console.log("la accion despachada es: " + action.errorsAccount);
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_0__actions__["a" /* SIGNUPSUBMIT */]:
       return Object.assign({}, state, {
+        isLoading: true
         //  isFetching: true
       });
     case __WEBPACK_IMPORTED_MODULE_0__actions__["b" /* SIGNUPSUBMIT_SUCCESS */]:
       return Object.assign({}, state, {
+        isLoading: false
+        //   errorsAccount: action.errorsAccount
         //   bretes: action.bretes,
         //  isFetching: false
       });
     case __WEBPACK_IMPORTED_MODULE_0__actions__["c" /* SIGNUPSUBMIT_FAILURE */]:
       return Object.assign({}, state, {
         // isFetching: false,
-        error: action.error
+        errorsAccount: action.errorsAccount,
+        isLoading: false
       });
     default:
       return state;
@@ -41970,4 +42025,4 @@ module.exports = function(module) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.js.map
+//# sourceMappingURL=4a37ca2b66a4a9f4b38d.map

@@ -20,15 +20,18 @@ class List extends React.Component {
       <div>
         <div className="thumbnail list-panel">
           <div className="list-title"> {this.props.listTitle}
-          </div>  
-            <CardContainer/>
-            <CardContainer/>
-            <CardContainer/>
-            <CardContainer/>
-            <CardContainer/>
+          </div>
+
+          <div className="list-panel-card">
+            <CardContainer />
+            <CardContainer />
+            <CardContainer />
+            <CardContainer />
+            <CardContainer />
+          </div>
           <div className="list-panel-add-card">
             <button type="submit" className="list-panel-add-card__button">
-              <img src={require("../../img/add-Icon.svg")}/>
+              <img src={require("../../img/add-Icon.svg")} />
             </button>
             <span className="list-panel-add-card__font"> Add Card </span>
           </div>

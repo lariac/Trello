@@ -9,7 +9,9 @@
   //  max-height: 20vh;
    // height: 2;
     overflow-y: hidden;
+    z-index: 0;
 }
+
 
 .board-title{
     color: #2c2b2c;
@@ -22,6 +24,7 @@
     margin-top: 1.938rem;
     margin-bottom: 1.688rem;
     position: fixed;
+    z-index: 0;
 }
 
 .col-md-10.row-col-style{
@@ -30,6 +33,7 @@
     position: static;
     padding-left: 0rem;
     padding-right: 0rem;
+     z-index: 0;
   
 }
 
@@ -54,6 +58,7 @@
   //  overflow: hidden; 
     position: fixed;
     width: 100%; 
+    z-index: 1;
 }
 
 .size{

@@ -1,5 +1,5 @@
 .list-panel{
-    width: 17.3rem;
+    width: 18.3rem;
     margin-right: 1.25rem;
     margin-top: 4.75rem;
    // height: 29.88rem;
@@ -20,6 +20,9 @@
 
     padding: 0rem;
     overflow-x:auto;
+
+    position: relative;
+    z-index: 0;
 
 &__button{
     background-color: transparent;
@@ -117,6 +120,12 @@
     margin-left: 1.375rem;
     margin-top: 1.875rem;
     margin-bottom: 1.688rem;
+}
+
+.list-panel-card{
+    height: 45vh;
+    overflow-x: auto;
+   // overflow-x: visible;
 }
 
 

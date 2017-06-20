@@ -4,7 +4,7 @@ const boardsController =  require('../controllers/boardsController');
 const cardsController =  require('../controllers/cardsController');
 const listsController =  require('../controllers/listsController');
 const membersController =  require('../controllers/membersController'); 
-
+const authController =  require('../controllers/authController'); 
 
 router.get('/board/:_id', boardsController.getBoardById);
 router.post('/board', boardsController.createBoard);
@@ -22,9 +22,13 @@ router.post('/list', listsController.createList);
 router.put('/list', listsController.updateList);
 router.delete('/list', listsController.deleteList);
 
+
 router.get('/member', membersController.getMember);
+router.get('/member/:email', membersController.getMemberByEmail); 
 router.post('/member', membersController.createMember);
 router.put('/member', membersController.updateMember);
 router.delete('/member/:_id', membersController.deleteMember); 
+
+router.post('/auth', authController.setUserAuthentication);
 
 module.exports = router;
