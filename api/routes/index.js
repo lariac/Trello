@@ -24,7 +24,7 @@ router.delete('/list', listsController.deleteList);
 
 
 router.get('/member', membersController.getMember);
-router.get('/member/:email', membersController.getMemberByEmail); 
+router.get('/member/:identifier', membersController.getMemberByUsernameEmail); 
 router.post('/member', membersController.createMember);
 router.put('/member', membersController.updateMember);
 router.delete('/member/:_id', membersController.deleteMember); 

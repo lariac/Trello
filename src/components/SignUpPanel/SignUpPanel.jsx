@@ -9,7 +9,7 @@ class SignUpPanel extends React.Component {
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.accountInformationValid = this.accountInformationValid.bind(this);
-    this.handleEmailUniqueness = this.handleEmailUniqueness.bind(this);
+    this.handleUsernameEmailUniqueness = this.handleUsernameEmailUniqueness.bind(this);
 
     /* SignUpPanel.defaultProps = {
        listTitle: "Design Thinking Session"
@@ -31,12 +31,13 @@ class SignUpPanel extends React.Component {
 
   }
 
-  handleEmailUniqueness(e) {
+  handleUsernameEmailUniqueness(e) {
     console.log("ESTOY EN BLUR!");
-    const inputValue = e.target.value
+    const inputValue = e.target.value;
+    const inputName = e.target.name;
     if (inputValue != '') {
       console.log("input value es: " + inputValue);
-      this.props.verifyEmailUniqueness(inputValue);
+      this.props.verifyUsernameEmailUniqueness(inputValue, inputName);
     }
   }
 
@@ -63,13 +64,14 @@ class SignUpPanel extends React.Component {
                     className="userInformation__userName form-control"
                     name="userName"
                     onChange={this.handleOnChange}
+                    onBlur={this.handleUsernameEmailUniqueness}
                     placeholder="Name"
                     value={this.props.userName} />
                   {this.props.errors.name && <span className="help-block"> {this.props.errors.name} </span>}
                   <input
                     className="userInformation__email form-control"
                     name="userEmail"
-                    onBlur={this.handleEmailUniqueness}
+                    onBlur={this.handleUsernameEmailUniqueness}
                     placeholder="Email"
                     onChange={this.handleOnChange}
                     value={this.props.userEmail} />
@@ -97,7 +99,7 @@ class SignUpPanel extends React.Component {
 
 SignUpPanel.propTypes = {
   signUpSubmit: React.PropTypes.func.isRequired,
-  verifyEmailUniqueness: React.PropTypes.func.isRequired
+  verifyUsernameEmailUniqueness: React.PropTypes.func.isRequired
 }
 
 export default SignUpPanel;

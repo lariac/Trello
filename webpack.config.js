@@ -84,4 +84,8 @@ module.exports = {
       jQuery: "jquery"
     })
   ],
+  node: {
+    net: 'empty',
+    dns: 'empty'
+  }
 };

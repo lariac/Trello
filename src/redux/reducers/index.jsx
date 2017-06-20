@@ -9,10 +9,13 @@ const initialState = {
   errorsAccount: {},
   isLoading: false,
   signUpSuccess: false,
-  user: {},
+  // user: {},
   invalidAccount: false,
   loginSuccess: false,
-  loginError: {}
+  loginError: {},
+  token: {},
+  isAuthenticated: false,
+  currentUser: {}
 }
 
 
@@ -56,7 +59,7 @@ export default function Trello(state = initialState, action) {
     case actionsList.GET_MEMBER_SUCCESS:
       return Object.assign({}, state, {
         isLoading: false,
-        user: action.user,
+        //  user: action.user,
         errorsAccount: action.errorsAccount,
         invalidAccount: action.invalidAccount
       });
@@ -67,27 +70,44 @@ export default function Trello(state = initialState, action) {
         invalidAccount: action.invalidAccount
       });
 
-        case actionsList.LOGINSUBMIT:
+    case actionsList.LOGINSUBMIT:
       return Object.assign({}, state, {
         isLoading: true
         //  isFetching: true
       });
-    case actionsList.LOGINSUBMIT_SUCCESS:
+    case actionsList.SET_CURRENT_USER:
       console.log("entre a suuuucesss");
+      let authenticateUser = false;
+      console.log("NO TENGO QUE AUTENTICAR USUARIO!!!!!" + action.user);
+      if (action.user == undefined) {
+        authenticateUser = false;
+      }
+      else {
+        authenticateUser = true;
+      }
       return Object.assign({}, state, {
         isLoading: false,
+        loginError: action.loginError,
+        loginSuccess: true,
+        currentUser: action.user,
         errorsAccount: action.errorsAccount,
-        loginSuccess: true
-        //   bretes: action.bretes,
-        //  isFetching: false
+        isAuthenticated: authenticateUser
       });
     case actionsList.LOGINSUBMIT_FAILURE:
       return Object.assign({}, state, {
-        // isFetching: false,
-        errorsAccount: action.errorsAccount,
+        loginError: action.loginError,
         isLoading: false,
         loginSuccess: false
       });
+
+    case actionsList.REMOVE_CURRENT_USER:
+      return Object.assign({}, state, {
+        isAuthenticated: action.authenticateUser,
+        currentUser: action.user,
+        loginError: action.loginError,
+        errorsAccount: action.errorsAccount
+      });
+
 
 
     default:

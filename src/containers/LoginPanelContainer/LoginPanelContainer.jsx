@@ -24,7 +24,8 @@ class LoginPanelContainer extends React.Component {
       validAccount: bool,
 
       loginSubmit: func.isRequired,
-      loginError: object
+      loginError: object,
+      isAuthenticated: bool
     }
   }
 
@@ -34,16 +35,20 @@ class LoginPanelContainer extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('COMPONENT UPDATE!!' + this.props.signUpSuccess);
-
-    if (this.props.LoginSuccess===true) {
+    if (this.props.isAuthenticated === true) {
       this.context.router.history.push('/board')
     }
   }
 
-  
+  componentWillMount() {
+    if (this.props.isAuthenticated === true) {
+      this.context.router.history.push('/board')
+    }
+  }
+
+
   render() {
-    const { loginSubmit, errors, isLoading, setErrors, signUpSuccess, verifyEmailUniqueness, invalidAccount, loginError } = this.props;
+    const { loginSubmit, errors, isLoading, setErrors, signUpSuccess, verifyEmailUniqueness, invalidAccount, loginError, loginSuccess } = this.props;
     return (
       <LoginPanel
         onChange={this.onChange}
@@ -52,6 +57,7 @@ class LoginPanelContainer extends React.Component {
         isLoading={isLoading}
         setErrors={setErrors}
         loginError={loginError}
+        loginSuccess={loginSuccess}
         //  verifyEmailUniqueness={verifyEmailUniqueness}
         //    invalidAccount={invalidAccount}
         {... this.state} />
@@ -64,7 +70,8 @@ const mapStateToProps = state => {
     errors: state.errorsAccount,
     isLoading: state.isLoading,
     loginSuccess: state.loginSuccess,
-    loginError: state.loginError
+    loginError: state.loginError,
+    isAuthenticated: state.isAuthenticated
     //   invalidAccount: state.invalidAccount
   }
 }

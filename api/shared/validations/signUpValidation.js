@@ -29,6 +29,6 @@ const validateInputData = function validateInputData(data) {
 
   errors.valid = noErrors;
   return errors;
-}
+} 
 
 module.exports = validateInputData; 

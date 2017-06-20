@@ -6,6 +6,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { Redirect } from 'react-router'
 
+import setAuthorizationToken from '../utils/setAuthorizationToken';
+
+import jwt from 'jsonwebtoken';
+
 export function signUpSubmit(userAccountInformation) {
   // const memberData = {name: userAccountInformation.userName, email: userAccountInformation.userEmail, password: userAccountInformation.userPassword}
   return function (dispatch) {
@@ -45,8 +49,8 @@ export function setErrorsAccount(validationResult) {
   }
 }
 
-export function verifyEmailUniqueness(inputValue) {
-  console.log("verificar emaaaail!!");
+export function verifyUsernameEmailUniqueness(inputValue, inputName) {
+  console.log("verificar emaaaail y usernameeeee!!" + inputValue);
   return function (dispatch) {
     dispatch({
       type: actionType.VERIFY_EMAIL_UNIQUENESS,
@@ -56,20 +60,28 @@ export function verifyEmailUniqueness(inputValue) {
       .then(result => {
         let errors = {};
         let invalidInformation = false;
-        console.log("result es: " + result);
-        if (result.data.length > 0) {
-          errors.email = "*Email already in use by another account";
+
+        if (result.data[0].length != undefined || result.data[1].length != undefined) {
+          if (inputName === "userName") {
+            errors.name = "*User name already in use by another account";
+          }
+          else {
+            errors.email = "*Email already in use by another account";
+          }
           errors.valid = false;
           invalidInformation = true;
         }
-        else{
+        else {
+          console.log("entre a elseeee!");
+          errors.name = "";
+          errors.email = "";
           errors.valid = true;
         }
         dispatch({
           type: actionType.GET_MEMBER_SUCCESS,
           user: result.data,
           errorsAccount: errors,
-          invalidAccount:  invalidInformation
+          invalidAccount: invalidInformation
         });
       })
       .catch(error => {
@@ -82,7 +94,34 @@ export function verifyEmailUniqueness(inputValue) {
   }
 }
 
-export function loginSubmit(userAccountInformation){
+export function setCurrentUser(user) {
+  return function (dispatch) {
+    dispatch({
+      type: actionType.SET_CURRENT_USER,
+      user: user,
+      loginError: {},
+      errorsAccount: {},
+    });
+  }
+}
+
+export function logOut() {
+  console.log("ESTOY EN ACTION CREATOR DE LOG OUT");
+  return function (dispatch) {
+    localStorage.removeItem('jwtToken');
+     setAuthorizationToken(false)
+    dispatch(
+       {
+        type: actionType.REMOVE_CURRENT_USER,
+        authenticateUser: false,
+        user: {},
+        loginError: {},
+        errorsAccount: {}
+      });
+  }
+}
+
+export function loginSubmit(userAccountInformation) {
   console.log("ESTOY EN LOGIN SUBMIT!");
   return function (dispatch) {
     dispatch({
@@ -91,17 +130,25 @@ export function loginSubmit(userAccountInformation){
     axios
       .post('http://localhost:3000/api/auth/', userAccountInformation)
       .then(result => {
-        console.log(result + "esto tiene result " + result.data);
+        const token = result.data.token;
+        setAuthorizationToken(token);
+        localStorage.setItem('jwtToken', token);
+        setCurrentUser(jwt.decode(token));
+        console.log(jwt.decode(token));
+        console.log(result + "esto tiene result de toooookeeeeeeeen " + result.data);
         dispatch({
-          type: actionType.LOGINSUBMIT_SUCCESS,
-          loginError: result.data,
+          type: actionType.SET_CURRENT_USER,
+          user: jwt.decode(token),
+          loginError: {},
           errorsAccount: {}
         });
       })
       .catch(error => {
+        console.log("error es: " + error.response.data[0]);
         dispatch({
           type: actionType.LOGINSUBMIT_FAILURE,
-          errorsAccount: error.response.data
+          loginError: error.response.data
+          //errorsAccount: error.response.data
         });
       })
   }

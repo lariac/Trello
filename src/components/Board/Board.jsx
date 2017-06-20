@@ -1,7 +1,7 @@
 import React from 'react';
 import BoardStyle from './_Board.scss'
-import BoardNavbar from '../BoardNavbar/BoardNavbar'
 import ListContainer from '../../containers/ListContainer/ListContainer'
+import BoardNavbarContainer from '../../containers/BoardNavbarContainer/BoardNavbarContainer';
 
 class Board extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Board extends React.Component {
     return (
       <div>
         <header className="header-style">
-          <BoardNavbar />
+          <BoardNavbarContainer />
         </header>
         <main className="content">
 

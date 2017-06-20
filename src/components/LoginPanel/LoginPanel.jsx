@@ -49,10 +49,8 @@ class LoginPanel extends React.Component {
             <div className="loginWrapper">
               <div className="loginContent loginContent__trelloLogo">
                 <img src={require('../../img/Trello-logo.svg')} />
-
- 
-
                 <form className="userInformation" onSubmit={this.handleOnSubmit} >
+                  {this.props.loginError.detailError && <div className="alert alert-danger"> {this.props.loginError.detailError} </div>}
                   <input
                     className="userInformation__userName form-control"
                     placeholder="User name or email"

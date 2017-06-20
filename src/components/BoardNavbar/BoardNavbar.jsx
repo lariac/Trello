@@ -1,8 +1,17 @@
 import React from 'react';
 import NavbarStyle from './_BoardNavbar.scss'
-import $ from 'jquery'
 
 class BoardNavbar extends React.Component {
+   constructor(props) {
+    super(props);
+
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+
+  handleLogOut(e){
+    e.preventDefault();
+    this.props.logOut();
+  }
   render() {
     return (
       <nav className="navbar fixed-top navbar-inverse ">
@@ -71,7 +80,7 @@ class BoardNavbar extends React.Component {
               <div className="dropdown dropdown-style">
                 <div data-toggle="dropdown" className="dropdown-toggle dropdown-font">Marco Sol<b className="caret dropdown-style__caret"></b></div>
                 <ul className="dropdown-menu">
-                  <li><a href="#">Action</a></li>
+                  <li><a href="#" onClick={this.handleLogOut}>Log Out</a></li>
                   <li><a href="#">Another action</a></li>
                 </ul>
               </div>
@@ -87,6 +96,10 @@ class BoardNavbar extends React.Component {
 
     )
   };
+}
+
+BoardNavbar.propTypes = {
+  logOut: React.PropTypes.func.isRequired
 }
 
 export default BoardNavbar;

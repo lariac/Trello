@@ -1,7 +1,7 @@
 import React from 'react';
 import SignUpPanel from '../../components/SignUpPanel/SignUpPanel'
 import { connect } from 'react-redux'
-import { signUpSubmit, setErrorsAccount, verifyEmailUniqueness } from '../../redux/actionCreators'
+import { signUpSubmit, setErrorsAccount, verifyUsernameEmailUniqueness } from '../../redux/actionCreators'
 import { object, func, bool } from 'prop-types';
 import { Route, Redirect } from 'react-router'
 
@@ -46,7 +46,7 @@ class SignUpPanelContainer extends React.Component {
   }
   render() {
 
-    const { signUpSubmit, errors, isLoading, setErrors, signUpSuccess, verifyEmailUniqueness, invalidAccount } = this.props;
+    const { signUpSubmit, errors, isLoading, setErrors, signUpSuccess, verifyUsernameEmailUniqueness, invalidAccount } = this.props;
 
     return (
       <SignUpPanel
@@ -55,7 +55,7 @@ class SignUpPanelContainer extends React.Component {
         errors={errors}
         isLoading={isLoading}
         setErrors={setErrors}
-        verifyEmailUniqueness = {verifyEmailUniqueness}
+        verifyUsernameEmailUniqueness = {verifyUsernameEmailUniqueness}
         invalidAccount = {invalidAccount}
         {... this.state} />
     );
@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     signUpSubmit: (userAccountInformation) => dispatch(signUpSubmit(userAccountInformation)),
     setErrors: (validationResult) => dispatch(setErrorsAccount(validationResult)),
-    verifyEmailUniqueness: (inputValue) => dispatch(verifyEmailUniqueness(inputValue))
+    verifyUsernameEmailUniqueness: (inputValue, inputName) => dispatch(verifyUsernameEmailUniqueness(inputValue, inputName))
   };
 };
 
