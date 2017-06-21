@@ -4,6 +4,8 @@ import App from '../App/App'
 import SignUpPanel from '../SignUpPanel/SignUpPanel'
 import Home from '../Home/Home'
 import BoardContainer from '../../containers/BoardContainer/BoardContainer'
+import BoardsPanelContainer from '../../containers/BoardsPanelContainer/BoardsPanelContainer'
+
 import LoginPanelContainer from '../../containers/LoginPanelContainer/LoginPanelContainer'
 import SignUpPanelContainer from '../../containers/SignUpPanelContainer/SignUpPanelContainer'
 
@@ -17,7 +19,8 @@ class Routes extends React.Component {
       <Route path='/home' component={ Home } />
       <Route path='/login' render={() => ( <LoginPanelContainer   />  )} />
       <Route path='/signup'  render={() => ( <SignUpPanelContainer   />  )} />
-      <Route path='/board' component={ BoardContainer } />
+      <Route path='/boards' component={ BoardContainer } />
+       <Route path='/board' component={ BoardsPanelContainer } />
       </Switch>
     </div>
   </Router>

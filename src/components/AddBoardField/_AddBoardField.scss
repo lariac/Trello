@@ -1,0 +1,169 @@
+.board-field{
+background-size: cover;
+    background-position: center center;
+    border-radius: 0.1875rem;
+    color: #fff;
+    display: block;
+    line-height: 1.25rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 9pt;
+    position: relative;
+    text-decoration: none;
+   // width: 15rem;
+    height: 6rem;
+    //width: 25%;
+    width: 13.69rem;
+     background-color: rgb(0, 121, 191);
+}
+
+.board-field.add-board{
+    background-color: #E2E4E6;
+    color: #8c8c8c;
+    display: table-cell;
+    height: 5pc;
+    font-weight: 400;
+    vertical-align: middle;
+    width: inherit;
+    text-align: center;
+    width: 13.69rem;
+    height: 6rem;
+}
+
+.board-field.add-board:hover{
+    background-color: #D6DADC;
+    color: #4d4d4d;
+    text-decoration: none;
+}
+
+
+
+.show-pop-over{
+    display: block;
+}
+
+.hide-pop-over{
+    display: none;
+
+}
+
+.add-pop-over{
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #D6DADC;
+    border-bottom-color: #C4C9CC;
+    box-shadow: 0 1px 6px rgba(0,0,0,.15);
+    background-size: cover;
+    background-position: center center;
+    border-radius: 0.1875rem;
+    color: #fff;
+    display: block;
+    line-height: 1.25rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    text-decoration: none;
+    height: 12.5rem;
+    width: 13.69rem;
+}
+
+.add-pop-over-header{
+    height: 2.25rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.add-pop-over-header-title{
+    box-sizing: border-box;
+    color: #8c8c8c;
+    display: block;
+    line-height: 2.25rem;
+    border-bottom: 0.0625rem solid #D6DADC;
+    margin: 0 0.625rem;
+    overflow: hidden;
+    padding: 0 2pc;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 1;
+    top: -1rem;
+}
+
+.add-pop-over-header-close-btn{
+    padding: 0.625rem 0.625rem 0.625rem 0.25rem;
+    position: absolute;
+    top: -1.3rem;
+    right: 0;
+    z-index: 2;
+}
+
+.icon-size{
+    font-size: 9pt;
+    height: 1rem;
+    line-height: 1.125rem;
+    width: 1rem;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+}
+
+.add-pop-over-content{
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 0.625rem 0.625rem;
+}
+
+.add-pop-over-input{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    background-color: #E2E4E6;
+    border: 0.0625rem solid #CDD2D4;
+    border-radius: 0.1875rem;
+    display: block;
+    margin-bottom: 9pt;
+    min-height: 2pc;
+    padding: 0.4375rem;
+    width: 100%;
+}
+
+.add-pop-over-font{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0.3125rem;
+    font-weight: bold;
+    color: #4d4d4d;;
+}
+
+.add-pop-over-button{
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+    background: linear-gradient(to bottom,#61BD4F 0,#5AAC44 100%);
+    box-shadow: 0 0.0625rem 0 #3F6F21;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 1.375rem;
+    margin: 0.5rem 0.25rem 0 0;
+    padding: 0.4375rem 1.25rem;
+    text-align: center;
+    border-radius: 0.1875rem;
+}
+
+
+    
+
+
+@media (max-width: 768px) {
+    
+    a.board-field.add-board{
+        width: 82.3788vw;
+    }
+    .add-pop-over{
+        width: 82.3788vw;
+    }
+
+}
+

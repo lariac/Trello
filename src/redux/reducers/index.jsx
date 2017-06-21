@@ -15,7 +15,8 @@ const initialState = {
   loginError: {},
   token: {},
   isAuthenticated: false,
-  currentUser: {}
+  currentUser: {}, 
+  errorMessage: ""
 }
 
 
@@ -73,7 +74,6 @@ export default function Trello(state = initialState, action) {
     case actionsList.LOGINSUBMIT:
       return Object.assign({}, state, {
         isLoading: true
-        //  isFetching: true
       });
     case actionsList.SET_CURRENT_USER:
       console.log("entre a suuuucesss");
@@ -106,6 +106,23 @@ export default function Trello(state = initialState, action) {
         currentUser: action.user,
         loginError: action.loginError,
         errorsAccount: action.errorsAccount
+      });
+
+    case actionsList.GET_USER_BOARDS:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+       case actionsList.GET_USER_BOARDS_SUCCESS :
+      return Object.assign({}, state, {
+        isLoading: true,
+        boards: action.boards
+      });
+
+       case actionsList.GET_USER_BOARDS_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: true,
+        errorMessage: action.errorMessage
       });
 
 

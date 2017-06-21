@@ -16,6 +16,22 @@ function getBoardById(req, res) {
   });
 };
 
+function getBoardByUserId(req, res) {
+    console.log("estoy en get board!");
+   Board.find({ idMembers: req.params._id }).populate('idMembers').exec((err, data) => {
+    if (!err) {
+      res.status(200);
+      res.json(data);
+    }
+    else {
+      res.status(404);
+      res.json(err);
+    }
+  });
+};
+
+
+
 //Add a board 
 function createBoard(req, res) {
   const board = new Board(req.body);
@@ -76,6 +92,7 @@ function deleteBoard(req, res) {
 
 const actions = {
   getBoardById,
+  getBoardByUserId,
   createBoard,
   updateBoard,
   deleteBoard

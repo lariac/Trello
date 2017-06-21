@@ -106,6 +106,7 @@ export function setCurrentUser(user) {
 }
 
 export function logOut() {
+  alert('hello');
   console.log("ESTOY EN ACTION CREATOR DE LOG OUT");
   return function (dispatch) {
     localStorage.removeItem('jwtToken');
@@ -149,6 +150,28 @@ export function loginSubmit(userAccountInformation) {
           type: actionType.LOGINSUBMIT_FAILURE,
           loginError: error.response.data
           //errorsAccount: error.response.data
+        });
+      })
+  }
+}
+
+export function getUserBoards(userId){
+  return function (dispatch) {
+    dispatch({
+      type: actionType.GET_USER_BOARDS,
+    });
+    axios
+      .get('http://localhost:3000/board/' + userId)
+      .then(result => {
+        dispatch({
+          type: actionType.GET_USER_BOARDS_SUCCESS,
+          boards: result.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.GET_USER_BOARDS_FAILURE,
+          errorMessage: error
         });
       })
   }
