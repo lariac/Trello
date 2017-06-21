@@ -9,14 +9,14 @@ const initialState = {
   errorsAccount: {},
   isLoading: false,
   signUpSuccess: false,
-  // user: {},
   invalidAccount: false,
   loginSuccess: false,
   loginError: {},
   token: {},
   isAuthenticated: false,
-  currentUser: {}, 
-  errorMessage: ""
+  currentUser: {},
+  errorMessage: "",
+  openBoard:{}
 }
 
 
@@ -113,15 +113,32 @@ export default function Trello(state = initialState, action) {
         isLoading: true
       });
 
-       case actionsList.GET_USER_BOARDS_SUCCESS :
+    case actionsList.GET_USER_BOARDS_SUCCESS:
       return Object.assign({}, state, {
-        isLoading: true,
+        isLoading: false,
         boards: action.boards
       });
 
-       case actionsList.GET_USER_BOARDS_FAILURE:
+    case actionsList.GET_USER_BOARDS_FAILURE:
       return Object.assign({}, state, {
-        isLoading: true,
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
+
+    case actionsList.CREATE_BOARD:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.CREATE_BOARD_SUCCESS:
+      return Object.assign({}, state, {
+        isLoading: false,
+        openBoard: action.createdBoard
+      });
+
+    case actionsList.CREATE_BOARD_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: false,
         errorMessage: action.errorMessage
       });
 

@@ -40,7 +40,7 @@ class SignUpPanelContainer extends React.Component {
   componentDidUpdate() {
     console.log('COMPONENT UPDATE!!' + this.props.signUpSuccess);
 
-    if (this.props.signUpSuccess===true) {
+    if (this.props.signUpSuccess != undefined && this.props.signUpSuccess===true) {
       this.context.router.history.push('/board')
     }
   }

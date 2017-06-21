@@ -106,7 +106,6 @@ export function setCurrentUser(user) {
 }
 
 export function logOut() {
-  alert('hello');
   console.log("ESTOY EN ACTION CREATOR DE LOG OUT");
   return function (dispatch) {
     localStorage.removeItem('jwtToken');
@@ -156,21 +155,50 @@ export function loginSubmit(userAccountInformation) {
 }
 
 export function getUserBoards(userId){
+  console.log("ENTRE A GET USER BOARDS :D" + userId);
   return function (dispatch) {
     dispatch({
       type: actionType.GET_USER_BOARDS,
     });
     axios
-      .get('http://localhost:3000/board/' + userId)
+      .get('http://localhost:3000/api/board/' + userId)
       .then(result => {
+        console.log(result);
         dispatch({
           type: actionType.GET_USER_BOARDS_SUCCESS,
           boards: result.data
         });
       })
       .catch(error => {
+         console.log("estoy en error!!");
         dispatch({
           type: actionType.GET_USER_BOARDS_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+export function addBoard(boardInformation){
+  return function (dispatch) {
+    dispatch({
+      type: actionType.CREATE_BOARD,
+    });
+    axios
+      .post('http://localhost:3000/api/board/', boardInformation)
+      .then(result => {
+        console.log(result);
+        
+        dispatch(getUserBoards(boardInformation.idMembers[0]));
+
+        dispatch({
+          type: actionType.CREATE_BOARD_SUCCESS,
+          createdBoard: result.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.CREATE_BOARD_FAILURE,
           errorMessage: error
         });
       })

@@ -1,15 +1,29 @@
 import React from 'react';
-import BoardNavbar from '../BoardNavbar/BoardNavbar'
+import BoardNavbarContainer from '../../containers/BoardNavbarContainer/BoardNavbarContainer'
 import BoardsPanelStyle from './_BoardsPanel.scss'
 import BoardField from '../BoardField/BoardField'
 import AddBoardFieldContainer from '../../containers/AddBoardFieldContainer/AddBoardFieldContainer'
+import { arrayOf, shape, string, bool } from 'prop-types';
 
 class BoardsPanel extends React.Component {
+  constructor(props) {
+    super(props);
+
+    BoardsPanel.propTypes = {
+      isFetching: bool,
+      boards: arrayOf(shape({
+        _id: string,
+        name: string,
+        idMembers: Array
+      }))
+    }
+  }
   render() {
+    const boards = this.props.boards;
     return (
       <div>
         <header>
-          <BoardNavbar />
+           <BoardNavbarContainer />
         </header>
         <main className="content boards-panel">
 
@@ -23,21 +37,17 @@ class BoardsPanel extends React.Component {
             </div>
           </div>
 
-      
-            <ul className="boards-panel-wrapper boards-panel">
-              <li className="boards-panel-item"><BoardField Boardtitle = "Welcome Board" /></li>
-              <li className="boards-panel-item"><BoardField Boardtitle = "Welcome Bssssoard" /></li>
-              <li className="boards-panel-item"><BoardField Boardtitle = "Welcome Board"  /></li>
-              <li className="boards-panel-item"><BoardField Boardtitle = "Welcome" /></li>
-              <li className="boards-panel-item"><BoardField Boardtitle = "Board"/></li>
-              <li className="boards-panel-item"><BoardField Boardtitle = "Buuu" /></li>
 
-              <li className="boards-panel-item add-board"><AddBoardFieldContainer/></li>
-    
-            </ul>
-  
+          <ul className="boards-panel-wrapper boards-panel">
+            {boards.map((item) => {
+              return <li className="boards-panel-item"> <BoardField
+                key={item._id}
+                Boardtitle={item.title} />
+              </li>
+            })}
 
-
+              <li className="boards-panel-item add-board"><AddBoardFieldContainer /></li>
+          </ul>
         </main>
       </div>
     )

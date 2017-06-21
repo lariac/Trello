@@ -35,13 +35,13 @@ class LoginPanelContainer extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.isAuthenticated === true) {
+    if (this.props.isAuthenticated != undefined && this.props.isAuthenticated === true) {
       this.context.router.history.push('/board')
     }
   }
 
   componentWillMount() {
-    if (this.props.isAuthenticated === true) {
+    if (this.props.isAuthenticated != undefined && this.props.isAuthenticated === true) {
       this.context.router.history.push('/board')
     }
   }

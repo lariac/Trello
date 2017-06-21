@@ -1,7 +1,7 @@
 import React from 'react';
 import BoardsPanel from '../../components/BoardsPanel/BoardsPanel'
 import { connect } from 'react-redux'
-import { getUserBoards} from '../../redux/actionCreators'
+import { getUserBoards } from '../../redux/actionCreators'
 import { arrayOf, object, func, bool, string } from 'prop-types';
 
 class BoardsPanelContainer extends React.Component {
@@ -14,7 +14,8 @@ class BoardsPanelContainer extends React.Component {
       getBoards: func,
       isLoading: bool,
       boards: arrayOf(object),
-      authenticatedUserId: string
+      authenticatedUserId: string,
+      openBoard: object
     }
 
     BoardsPanelContainer.defaultProps = {
@@ -22,26 +23,32 @@ class BoardsPanelContainer extends React.Component {
     }
   }
 
-    componentWillMount(){
+  componentDidMount() {
 
-      this.props.getBoards(this.props.authenticatedUserId);
-    }
+   // console.log("ENTRE A ");
+    this.props.getBoards(this.props.authenticatedUserId);
+  }
+
+   componentDidUpdate() {
+
+    //this.props.getBoards(this.props.authenticatedUserId);
+   // console.log("ENTRE A DID UPDATE!!");
+  }
+
 
   render() {
+      console.log("RENDERIZAR!!");
+    const { boards, openBoard } = this.props;
     return (
-      <BoardsPanel />
+      <BoardsPanel boards={boards} />
     );
   }
 };
 
 const mapStateToProps = state => {
   return {
-  /*  errors: state.errorsAccount,
-    isLoading: state.isLoading,
-    loginSuccess: state.loginSuccess,
-    loginError: state.loginError,
-    isAuthenticated: state.isAuthenticated, */
-    boards: Array.isArray(state.boards) ? state.boards : [],
+    boards: Array.isArray(state.boards)  ? state.boards : [],
+    openBoard: state.openBoard,
     authenticatedUserId: state.currentUser.id
   }
 }

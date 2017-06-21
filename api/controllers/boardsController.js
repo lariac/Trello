@@ -4,12 +4,19 @@ const List = require('../models/List');
 
 //Get a board by Id
 function getBoardById(req, res) {
-  Board.findById({ _id: req.params._id }).populate('idMembers').exec((err, data) => {
+  console.log("esto tiene req en get board by id!" + req.params._id);
+  const x = ""
+ // Board.find().where('idMembers').equals(req.params._id).exec((err, data) => {
+   Board.find().where('idMembers').equals(req.params._id).exec((err, data) => {
     if (!err) {
+      console.log("entr al if de get board by id");
       res.status(200);
+      console.log("data en find es: " + data);
       res.json(data);
+      console.log("ya escribi res!!");
     }
     else {
+      console.log("entr al else de get board by id");
       res.status(404);
       res.json(err);
     }

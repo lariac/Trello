@@ -39,12 +39,23 @@ background-size: cover;
 
 .show-pop-over{
     display: block;
+    background: #fff;;
 }
 
 .hide-pop-over{
     display: none;
-
+    background: #fff;
 }
+
+.show-add-field{
+    display: block;
+}
+
+.hide-add-field{
+    display: none;
+}
+
+.displayAddField
 
 .add-pop-over{
     background: #fff;
@@ -85,13 +96,12 @@ background-size: cover;
     text-overflow: ellipsis;
     white-space: nowrap;
     z-index: 1;
-    top: -1rem;
 }
 
 .add-pop-over-header-close-btn{
     padding: 0.625rem 0.625rem 0.625rem 0.25rem;
     position: absolute;
-    top: -1.3rem;
+    top: -0.2rem;
     right: 0;
     z-index: 2;
 }

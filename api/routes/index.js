@@ -8,8 +8,7 @@ const authController =  require('../controllers/authController');
 const authenticate = require('../authenticate');
 
 router.get('/board/:_id', authenticate, boardsController.getBoardById);
-router.get('/board/:idUser', boardsController.getBoardByUserId);
-router.post('/board', authenticate, boardsController.createBoard);
+router.post('/board', boardsController.createBoard);
 router.put('/board/:_id', authenticate, boardsController.updateBoard);
 router.delete('/board/:_id', authenticate, boardsController.deleteBoard);
 
@@ -26,7 +25,7 @@ router.delete('/list', authenticate, listsController.deleteList);
 
 
 router.get('/member', authenticate, membersController.getMember);
-router.get('/member/:identifier', authenticate, membersController.getMemberByUsernameEmail); 
+router.get('/member/:identifier', membersController.getMemberByUsernameEmail); 
 router.post('/member', authenticate, membersController.createMember);
 router.put('/member', authenticate, membersController.updateMember);
 router.delete('/member/:_id', authenticate, membersController.deleteMember); 
