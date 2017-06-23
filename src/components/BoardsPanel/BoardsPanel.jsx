@@ -2,28 +2,23 @@ import React from 'react';
 import BoardNavbarContainer from '../../containers/BoardNavbarContainer/BoardNavbarContainer'
 import BoardsPanelStyle from './_BoardsPanel.scss'
 import BoardField from '../BoardField/BoardField'
-import AddBoardFieldContainer from '../../containers/AddBoardFieldContainer/AddBoardFieldContainer'
 import { arrayOf, shape, string, bool } from 'prop-types';
+import BoardFieldContainer from '../../containers/BoardFieldContainer/BoardFieldContainer'
+
 
 class BoardsPanel extends React.Component {
   constructor(props) {
     super(props);
 
     BoardsPanel.propTypes = {
-      isFetching: bool,
-      boards: arrayOf(shape({
-        _id: string,
-        name: string,
-        idMembers: Array
-      }))
+     
     }
   }
   render() {
-    const boards = this.props.boards;
     return (
       <div>
         <header>
-           <BoardNavbarContainer />
+          <BoardNavbarContainer />
         </header>
         <main className="content boards-panel">
 
@@ -36,22 +31,17 @@ class BoardsPanel extends React.Component {
               </div>
             </div>
           </div>
-
-
-          <ul className="boards-panel-wrapper boards-panel">
-            {boards.map((item) => {
-              return <li className="boards-panel-item"> <BoardField
-                key={item._id}
-                Boardtitle={item.title} />
-              </li>
-            })}
-
-              <li className="boards-panel-item add-board"><AddBoardFieldContainer /></li>
-          </ul>
+            <BoardFieldContainer boards={this.props.boards} />           
         </main>
       </div>
     )
   };
 }
+
+BoardsPanel.propTypes = {
+  boards: React.PropTypes.arrayOf(React.PropTypes.object)
+}
+
+
 
 export default BoardsPanel;

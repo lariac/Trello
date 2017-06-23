@@ -84,7 +84,7 @@ class SignUpPanel extends React.Component {
                     onChange={this.handleOnChange}
                     value={this.props.userPassword} />
                   {this.props.errors.password && <span className="help-block"> {this.props.errors.password} </span>}
-                  <button className="btn btn-primary userInformation__logIn fontLogin" disabled={this.props.isLoading || this.props.invalidAccount}>Log In</button>
+                  <button className="btn btn-primary userInformation__logIn fontLogin" disabled={this.props.isLoading || this.props.invalidAccount}>Sign Up</button>
                 </form>
               </div>
             </div>

@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const Card = require('./Card');
 const listSchema = new mongoose.Schema({
     title:{
         type: String,
     },
     idBoard: { type: mongoose.Schema.ObjectId, ref: 'Board' },
-    idCard: [{ type: mongoose.Schema.ObjectId, ref: 'Card' }],
+    idCards: [{ type: mongoose.Schema.ObjectId, ref: 'Card' }],
 });
 
 listSchema.post('remove', function (doc) {

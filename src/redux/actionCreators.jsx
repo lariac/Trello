@@ -21,10 +21,12 @@ export function signUpSubmit(userAccountInformation) {
       .post('http://localhost:3000/api/member', userAccountInformation)
       .then(result => {
         console.log("insercion exitosaaa");
-
+        const loginInformation = {name: userAccountInformation.name, password: userAccountInformation.password }
+        dispatch(loginSubmit(loginInformation));
         dispatch({
           type: actionType.SIGNUPSUBMIT_SUCCESS,
-          errorsAccount: {}
+          errorsAccount: {},
+          user: result.data
         });
         return Promise.resolve();
       })
@@ -161,16 +163,17 @@ export function getUserBoards(userId){
       type: actionType.GET_USER_BOARDS,
     });
     axios
-      .get('http://localhost:3000/api/board/' + userId)
+      .get('http://localhost:3000/api/board/user/' + userId)
       .then(result => {
-        console.log(result);
+        console.log("estoy en el then de exito! user boards ");
+        console.log(result.data);
         dispatch({
           type: actionType.GET_USER_BOARDS_SUCCESS,
           boards: result.data
         });
       })
       .catch(error => {
-         console.log("estoy en error!!");
+         console.log("estoy en error de traer boards!!" + error);
         dispatch({
           type: actionType.GET_USER_BOARDS_FAILURE,
           errorMessage: error
@@ -199,6 +202,163 @@ export function addBoard(boardInformation){
       .catch(error => {
         dispatch({
           type: actionType.CREATE_BOARD_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+export function deleteBoard(boardId, idAuthenticateMember ){
+  console.log("el board es: " + boardId);
+return function (dispatch) {
+    dispatch({
+      type: actionType.DELETE_BOARD,
+    });
+    axios
+      .delete('http://localhost:3000/api/board/' + boardId)
+      .then(result => {
+        console.log(result);
+        
+        dispatch(getUserBoards(idAuthenticateMember));
+
+        dispatch({
+          type: actionType.DELETE_BOARD_SUCCESS,
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.DELETE_BOARD_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+export function getBoardList(boardId){
+  console.log("ESTOY OBTENIENDO LAS LISTAS DEL BOARD!!");
+  console.log("boardId es: " + boardId);
+  return function (dispatch) {
+    dispatch({
+      type: actionType.GET_BOARD_LIST,
+    });
+    axios
+      .get('http://localhost:3000/api/list/' + boardId)
+      .then(result => {
+        console.log("estoy en el then de exito de listaaassss!");
+        console.log(result.data);
+        dispatch({
+          type: actionType.GET_BOARD_LIST_SUCCESS,
+          boardList: result.data
+        });
+      })
+      .catch(error => {
+         console.log("estoy en error de traer listaaaaasss!!" + error);
+        dispatch({
+          type: actionType.GET_BOARD_LIST_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+
+export function getBoardInformation(boardId){
+  console.log("estoy trayendo board info con " + boardId);
+  return function (dispatch) {
+    dispatch({
+      type: actionType.GET_BOARD,
+    });
+    axios
+      .get('http://localhost:3000/api/board/' + boardId)
+      .then(result => {
+        dispatch(getBoardList(boardId));
+        dispatch({
+          type: actionType.GET_BOARD_SUCCESS,
+          board: result.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.GET_BOARD_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+export function addList(listInformation){
+  return function (dispatch) {
+    dispatch({
+      type: actionType.CREATE_LIST,
+    });
+    axios
+      .post('http://localhost:3000/api/list/', listInformation)
+      .then(result => {
+        console.log(result);
+        
+        dispatch(getBoardList(listInformation.idBoard));
+
+        dispatch({
+          type: actionType.CREATE_LIST_SUCCESS,
+         // createdBoard: result.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.CREATE_LIST_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+export function deleteList(idList, idBoard){
+  return function (dispatch) {
+    dispatch({
+      type: actionType.DELETE_LIST,
+    });
+    axios
+      .delete('http://localhost:3000/api/list/'+ idList)
+      .then(result => {
+        console.log(result);
+        
+        dispatch(getBoardList(idBoard));
+
+        dispatch({
+          type: actionType.DELETE_LIST_SUCCESS,
+         // createdBoard: result.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.DELETE_LIST_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+
+export function addCard(cardInformation){
+  return function (dispatch) {
+    dispatch({
+      type: actionType.CREATE_CARD,
+    });
+    axios
+      .post('http://localhost:3000/api/card/', cardInformation)
+      .then(result => {
+        console.log(result);
+        
+        dispatch(getBoardList(cardInformation.idBoard));
+
+        dispatch({
+          type: actionType.CREATE_CARD_SUCCESS,
+         // createdBoard: result.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.CREATE_CARD_FAILURE,
           errorMessage: error
         });
       })

@@ -1,60 +1,64 @@
 import React from 'react';
 import BoardStyle from './_Board.scss'
 import ListContainer from '../../containers/ListContainer/ListContainer'
+import AddListContainer from '../../containers/AddListContainer/AddListContainer'
 import BoardNavbarContainer from '../../containers/BoardNavbarContainer/BoardNavbarContainer';
-
+import { object } from 'prop-types';
 class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
 
     };
-    Board.defaultProps = {
-      boardTitle: "This is the project title"
-    };
+
   }
 
 
   render() {
-
+    const { openBoard, boardList } = this.props;
+    let listTitle = "";
+    let idList = "";
+      console.log("ESTOY RENDERIZANDO UN BOOOARD")
+      console.log(boardList);
     return (
+    
       <div>
         <header className="header-style">
           <BoardNavbarContainer />
         </header>
         <main className="content">
-
           <div className="row ">
-
             <div className="col-md-10 row-col-style">
-              <div className="board-title"> {this.props.boardTitle}
+              <div className="board-title">
+                {openBoard.title}
               </div>
             </div>
             <div className="col-md-2">
             </div>
-
           </div>
-
-
           <div className="list-wrapper">
-            <ListContainer listTitle={this.props.listTitle} />
-            <ListContainer listTitle={this.props.listTitle} />
-            <ListContainer listTitle={this.props.listTitle} />
-            <ListContainer listTitle={this.props.listTitle} />
-            <ListContainer listTitle={this.props.listTitle} />
-            <ListContainer listTitle={this.props.listTitle} />
-
-            <ListContainer listTitle={this.props.listTitle} />
-            <ListContainer listTitle={this.props.listTitle} />
-            <ListContainer listTitle={this.props.listTitle} />
-
-
+            {boardList.map((item) => {
+               listTitle = item.title;
+               idList = item._id
+              return <ListContainer 
+              key = {item._id} 
+              listTitle={listTitle} 
+              list = {item}
+              idList= {idList}/>
+            })}
+            <AddListContainer/>
           </div>
-
         </main>
       </div>
     )
   };
+}
+
+Board.defaultProps = {
+  openBoard: { title: "Hola" },
+  boardList: [{ idCards: "Card1" }],
+  list: {},
+  idList: ""
 }
 
 export default Board;

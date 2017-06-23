@@ -12,8 +12,9 @@
    // width: 15rem;
     height: 6rem;
     //width: 25%;
-    width: 13.69rem;
-     background-color: rgb(0, 121, 191);
+    width: 15.63rem;
+    background-color: rgb(0, 121, 191);
+     cursor: pointer;
 }
 
 .board-field-fade{
@@ -41,12 +42,24 @@
 
 
 .board-field:hover
-.board-field-fade{
+.board-field-fade 
+
+{
     color: #fff;
     text-decoration: none;
     background-color: rgba(0,0,0,0.25);
+
+ 
     
-    
+}
+
+.board-field:hover > .show-delete-icon{
+    display: inline;
+    transition: left 0.5s linear;
+    position: absolute;
+    left: 12;
+
+   
 }
 
 .board-field-details-name{
@@ -58,12 +71,48 @@
     color: #fff; 
 }
 
+.board-field-delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    color: #fff;
+    line-height: 20px;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    background-color: transparent;
+    border: 0;
+    width: 3.5rem; 
+    height: 3.5rem;
+}
+
+.board-field-delete-icon:hover{
+   width: 1.6rem;
+   height: 1.6rem;
+   
+}
+
+.show-delete-icon{
+    display: none;
+    position: absolute;
+    left: 14;
+}
+
+.hide-delete-icon{
+    display: none;    
+}
+
+.board-field-delete-icon{
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
 
 
 @media (max-width: 768px) {
     
     a.board-field{
-        width: 82.3788vw;
+        width: 75.8vw;
     }
 }
 

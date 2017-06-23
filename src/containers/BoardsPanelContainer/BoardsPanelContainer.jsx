@@ -15,7 +15,7 @@ class BoardsPanelContainer extends React.Component {
       isLoading: bool,
       boards: arrayOf(object),
       authenticatedUserId: string,
-      openBoard: object
+      openBoard: arrayOf(object)
     }
 
     BoardsPanelContainer.defaultProps = {
@@ -23,17 +23,21 @@ class BoardsPanelContainer extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
+
+    console.log("ENTRE A COMPONENT DID MOUUUUUUNT!!");
 
    // console.log("ENTRE A ");
-    this.props.getBoards(this.props.authenticatedUserId);
+
+   if(this.props.authenticatedUserId != undefined){
+        this.props.getBoards(this.props.authenticatedUserId);
+   }
+   else{
+       this.context.router.history.push('/home')
+   }
+   
   }
 
-   componentDidUpdate() {
-
-    //this.props.getBoards(this.props.authenticatedUserId);
-   // console.log("ENTRE A DID UPDATE!!");
-  }
 
 
   render() {
@@ -58,6 +62,10 @@ const mapDispatchToProps = (dispatch) => {
     getBoards: (authenticatedUserId) => dispatch(getUserBoards(authenticatedUserId))
   };
 };
+
+BoardsPanelContainer.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardsPanelContainer);

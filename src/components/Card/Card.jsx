@@ -12,7 +12,7 @@ class Card extends React.Component {
     Card.defaultProps = {
       description: "",
       dueDate: "",
-      username: "L"
+      username: "J"
     };
   }
 
@@ -21,14 +21,12 @@ class Card extends React.Component {
     return (
       <div>
         <div className="thumbnail card-panel">
-          <p className="card-panel__description-font">{this.props.description}</p>
+          <p className="card-panel__description-font">{this.props.cardDescription}</p>
           <div className="users-panel">
             <span className="users-panel-due-date users-panel-due-date__font">{this.props.dueDate}</span>
             <div className="users-panel-members">
-              <CardMembers username="a"/>
-              <CardMembers username="L"/>
-              <CardMembers username="R"/>
-              <CardMembers username="A"/>
+              <CardMembers currentUserName={   
+                this.props.currentUserName}/>
             </div>
           </div>
         </div>

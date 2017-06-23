@@ -13,6 +13,15 @@ class BoardNavbar extends React.Component {
     this.props.logOut();
   }
   render() {
+    let userName = this.props.userName;
+    let endingUserName = "..."
+    let user = this.props.userName;
+
+    if(this.props.userName != undefined && this.props.userName.length > 8){
+      userName = user.substring(0, 8- endingUserName.length ) + endingUserName;
+      console.log("userName es: " + userName);
+    }
+
     return (
       <nav className="navbar fixed-top navbar-inverse ">
         <div className="navbar-header">
@@ -78,7 +87,7 @@ class BoardNavbar extends React.Component {
 
             <li>
               <div className="dropdown dropdown-style">
-                <div data-toggle="dropdown" className="dropdown-toggle dropdown-font">Marco Sol<b className="caret dropdown-style__caret"></b></div>
+                <div data-toggle="dropdown" className="dropdown-toggle dropdown-font">{userName}<b className="caret dropdown-style__caret"></b></div>
                 <ul className="dropdown-menu">
                   <li><a href="#" onClick={this.handleLogOut}>Log Out</a></li>
                   <li><a href="#">Another action</a></li>
@@ -99,7 +108,8 @@ class BoardNavbar extends React.Component {
 }
 
 BoardNavbar.propTypes = {
-  logOut: React.PropTypes.func.isRequired
+  logOut: React.PropTypes.func.isRequired,
+  userName: React.PropTypes.string
 }
 
 export default BoardNavbar;

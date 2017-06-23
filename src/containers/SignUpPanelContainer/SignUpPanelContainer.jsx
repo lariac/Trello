@@ -44,6 +44,13 @@ class SignUpPanelContainer extends React.Component {
       this.context.router.history.push('/board')
     }
   }
+    componentWillMount() {
+    console.log('COMPONENT UPDATE!!' + this.props.signUpSuccess);
+
+    if (this.props.signUpSuccess != undefined && this.props.signUpSuccess===true) {
+      this.context.router.history.push('/board')
+    }
+  }
   render() {
 
     const { signUpSubmit, errors, isLoading, setErrors, signUpSuccess, verifyUsernameEmailUniqueness, invalidAccount } = this.props;

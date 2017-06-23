@@ -16,7 +16,8 @@ const initialState = {
   isAuthenticated: false,
   currentUser: {},
   errorMessage: "",
-  openBoard:{}
+  openBoard: [],
+  boardList: []
 }
 
 
@@ -32,7 +33,8 @@ export default function Trello(state = initialState, action) {
       return Object.assign({}, state, {
         isLoading: false,
         signUpSuccess: true,
-        errorsAccount: action.errorsAccount
+        errorsAccount: action.errorsAccount,
+        currentUser: action.user
         //   bretes: action.bretes,
         //  isFetching: false
       });
@@ -120,6 +122,7 @@ export default function Trello(state = initialState, action) {
       });
 
     case actionsList.GET_USER_BOARDS_FAILURE:
+      console.log("ESTOY EN FALLO!");
       return Object.assign({}, state, {
         isLoading: false,
         errorMessage: action.errorMessage
@@ -132,8 +135,7 @@ export default function Trello(state = initialState, action) {
 
     case actionsList.CREATE_BOARD_SUCCESS:
       return Object.assign({}, state, {
-        isLoading: false,
-        openBoard: action.createdBoard
+        isLoading: false
       });
 
     case actionsList.CREATE_BOARD_FAILURE:
@@ -141,6 +143,115 @@ export default function Trello(state = initialState, action) {
         isLoading: false,
         errorMessage: action.errorMessage
       });
+
+       case actionsList.DELETE_BOARD:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.DELETE_BOARD_SUCCESS:
+      return Object.assign({}, state, {
+        isLoading: false
+      });
+
+    case actionsList.DELETE_BOARD_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
+
+
+    case actionsList.GET_BOARD:
+    console.log("ESTOY EN GET BOARD!!");
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.GET_BOARD_SUCCESS:
+    console.log("HICE LA ACCION DE GET BOARD SUCCESS!!");
+      return Object.assign({}, state, {
+        isLoading: false,
+        openBoard: action.board
+      });
+
+    case actionsList.GET_BOARD_FAILURE:
+      console.log("ESTOY EN FALLO!");
+      return Object.assign({}, state, {
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
+
+
+    case actionsList.GET_BOARD_LIST:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.GET_BOARD_LIST_SUCCESS:
+    console.log("YA METI LISTAS EN LA VARIABLEEEEEEE BOAAARDLIST!!!");
+      return Object.assign({}, state, {
+        isLoading: false,
+        boardList: action.boardList
+      });
+
+    case actionsList.GET_BOARD_LIST_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
+
+
+    case actionsList.CREATE_LIST:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.CREATE_LIST_SUCCESS:
+      return Object.assign({}, state, {
+        isLoading: false,
+      });
+
+    case actionsList.CREATE_LIST_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
+
+       case actionsList.DELETE_LIST:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.DELETE_LIST_SUCCESS:
+      return Object.assign({}, state, {
+        isLoading: false,
+      });
+
+    case actionsList.DELETE_LIST_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
+
+      case actionsList.CREATE_CARD:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.CREATE_CARD_SUCCESS:
+      return Object.assign({}, state, {
+        isLoading: false,
+      });
+
+    case actionsList.CREATE_CARD_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
+      
+      
+      
+
 
 
 

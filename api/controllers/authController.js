@@ -7,6 +7,7 @@ const config = require('../config');
 
 //Post a member in authentication 
 function setUserAuthentication(req, res) {
+  console.log("entre a user authentication!!");
   const auth = new Auth(req.body);
   let successEmail = false;
   let successUsername = false;

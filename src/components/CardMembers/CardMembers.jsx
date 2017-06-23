@@ -8,7 +8,7 @@ class CardMembers extends React.Component {
 
         };
         CardMembers.defaultProps = {
-            username:"L"
+            username:"J"
         };
     }
 
@@ -17,7 +17,7 @@ class CardMembers extends React.Component {
         return (
             <div>
                 <div className="card-members-style">
-                    <span className="card-members-style__font">{this.props.username}</span>
+                    <span className="card-members-style__font">{this.props.currentUserName.charAt(0)}</span>
                 </div>
             </div>
         )

@@ -15,12 +15,16 @@ class Routes extends React.Component {
    <Router>
     <div>
       <Switch>
+      {console.log("ESTOY EN EL SWITCH")}
       <Route exact path='/' component={ Home } />
       <Route path='/home' component={ Home } />
       <Route path='/login' render={() => ( <LoginPanelContainer   />  )} />
       <Route path='/signup'  render={() => ( <SignUpPanelContainer   />  )} />
-      <Route path='/boards' component={ BoardContainer } />
-       <Route path='/board' component={ BoardsPanelContainer } />
+      <Route exact path='/board' component={ BoardsPanelContainer } />
+      <Route path='/board/:id' component={ BoardContainer } />
+   
+      
+      
       </Switch>
     </div>
   </Router>
