@@ -32,9 +32,9 @@ class AddBoardField extends React.Component {
 
   handleOnSubmit(e){
     e.preventDefault();
-    console.log("el user tiene: " + this.props.currentUserId)
     const boardInformation = {title: this.props.boardTitle, idMembers: [this.props.currentUserId]}
     this.props.hidePopOver();
+    this.props.resetInput();
     this.props.addBoard(boardInformation);
   }
 

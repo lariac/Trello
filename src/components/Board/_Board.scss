@@ -1,13 +1,8 @@
 .content{
- //   background-color: #f5f8ff;
-//    height: 50vh;
- //   top: 4.5rem;
- //   width: 100%;
+
     height: calc(100vh - 4.5rem);
     top: 4.5rem;
     position: relative;
-  //  max-height: 20vh;
-   // height: 2;
     overflow-y: hidden;
     z-index: 0;
 }
@@ -18,9 +13,7 @@
     font-family: "Helvetica Neue" sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
-   // line-height: 1.688rem;
     margin-left: 3.813rem; 
-  //  margin-top: 1.938rem;  
     margin-top: 1.938rem;
     margin-bottom: 1.688rem;
     position: fixed;
@@ -28,8 +21,6 @@
 }
 
 .col-md-10.row-col-style{
-  //margin-left: -0.9375rem;
- // margin-right: -0.9375rem;
     position: static;
     padding-left: 0rem;
     padding-right: 0rem;
@@ -55,7 +46,6 @@
     -ms-flex: none;
     flex: none;
     height: auto; 
-  //  overflow: hidden; 
     position: fixed;
     width: 100%; 
     z-index: 1;

@@ -27,25 +27,18 @@ class SignUpPanelContainer extends React.Component {
 
 
   onChange(e) {
-    console.log("esta cambiando este: " + e.target.name);
     this.setState({ [e.target.name]: e.target.value });
   }
   setErrors(data) {
-    console.log("estos son los errores" + data);
+  //  console.log("estos son los errores" + data);
   }
-  /*  signUpSubmitAction(userAccountInformation){
-      console.log(userAccountInformation);
-    }  */
-
   componentDidUpdate() {
-    console.log('COMPONENT UPDATE!!' + this.props.signUpSuccess);
 
     if (this.props.signUpSuccess != undefined && this.props.signUpSuccess===true) {
       this.context.router.history.push('/board')
     }
   }
     componentWillMount() {
-    console.log('COMPONENT UPDATE!!' + this.props.signUpSuccess);
 
     if (this.props.signUpSuccess != undefined && this.props.signUpSuccess===true) {
       this.context.router.history.push('/board')

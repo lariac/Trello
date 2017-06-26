@@ -35,11 +35,9 @@ class AddListContainer extends React.Component {
     this.setState({displayAddList: "hide-add-list", displayPopOver: "show-pop-over"});
   }
   onChange(inputValue){
-      console.log("evento on change en container!!" +  inputValue);
      this.setState({listTitle: inputValue});
   } 
   hidePopOver(){
-    console.log("ENTRE  A CAMBIAR POP OVEEER");
     this.setState({displayAddList: "show-add-list", displayPopOver: "hide-pop-over"});
   }
   resetInput(){
@@ -47,7 +45,6 @@ class AddListContainer extends React.Component {
   }
   render() {
      const { currentUserId, openBoard, addList  } = this.props;
-        console.log("open board es: ");
 
     return (
       <AddList
@@ -67,7 +64,6 @@ class AddListContainer extends React.Component {
 };
 
 const mapStateToProps = state => {
-    console.log("estoy buscando estado!" + state.openBoard);
   return {
     currentUserId: state.currentUser.id,
     openBoard : state.openBoard ? state.openBoard: []

@@ -28,14 +28,11 @@ class AddList extends React.Component {
 
     e.preventDefault();
     const inputValue = e.target.value;
-    console.log("hanle en change event!!!");
     this.props.onChange(inputValue)
   }
 
   handleOnSubmit(e) {
     e.preventDefault();
-    console.log("password del user " + this.props.currentUserId);
-    console.log("id del board " + this.props.openBoard._id);
     const listInformation = { title: this.props.listTitle, idBoard: this.props.openBoard._id, idMembers: [this.props.currentUserId] }
     this.props.hidePopOver();
     this.props.resetInput();
@@ -43,7 +40,6 @@ class AddList extends React.Component {
   }
 
   render() {
-    console.log("title es:" + this.props.listTitle);
     return (
       <div>
         <div className={this.props.displayAddList}>

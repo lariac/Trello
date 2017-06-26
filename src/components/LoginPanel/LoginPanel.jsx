@@ -9,9 +9,6 @@ class LoginPanel extends React.Component {
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.validLoginInformation = this.validLoginInformation.bind(this)
-    /* SignUpPanel.defaultProps = {
-       listTitle: "Design Thinking Session"
-     }; */
   }
   handleOnChange(e) {
     this.props.onChange(e);
@@ -20,7 +17,6 @@ class LoginPanel extends React.Component {
    validLoginInformation() {
 
     const userAccountInformation = { nameEmail: this.props.userNameEmail, password: this.props.userPassword }
-    console.log("esto tiene el user account information " + userAccountInformation.nameEmail );
     const validationResult = validateInputData(userAccountInformation);
 
     if (validationResult.valid === false) {

@@ -18,8 +18,6 @@ class Board extends React.Component {
     const { openBoard, boardList } = this.props;
     let listTitle = "";
     let idList = "";
-      console.log("ESTOY RENDERIZANDO UN BOOOARD")
-      console.log(boardList);
     return (
     
       <div>

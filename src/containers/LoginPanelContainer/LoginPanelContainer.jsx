@@ -30,7 +30,6 @@ class LoginPanelContainer extends React.Component {
   }
 
   onChange(e) {
-    console.log("esta cambiando este: " + e.target.name);
     this.setState({ [e.target.name]: e.target.value });
   }
 

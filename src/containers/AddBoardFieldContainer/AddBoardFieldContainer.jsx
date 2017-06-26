@@ -15,6 +15,7 @@ class AddBoardFieldContainer extends React.Component {
     this.showPopOver = this.showPopOver.bind(this);
     this.onChange = this.onChange.bind(this);
     this.hidePopOver = this.hidePopOver.bind(this);
+    this.resetInput = this.resetInput.bind(this);
 
 
     AddBoardFieldContainer.propTypes = {
@@ -24,9 +25,8 @@ class AddBoardFieldContainer extends React.Component {
       onChange: func,
       boardTitle: string,
       currentUserId: string,
-      hidePopOver: func
-    
-
+      hidePopOver: func,
+      resetInput: func
     }
   }
   showPopOver(){
@@ -36,8 +36,10 @@ class AddBoardFieldContainer extends React.Component {
      this.setState({boardTitle: inputValue});
   } 
   hidePopOver(){
-    console.log("ENTRE  A CAMBIAR POP OVEEER");
     this.setState({displayAddField: "show-add-field", displayPopOver: "hide-pop-over"});
+  }
+   resetInput(){
+      this.setState({boardTitle:""});
   }
   render() {
      const { currentUserId, addBoard } = this.props;
@@ -51,6 +53,7 @@ class AddBoardFieldContainer extends React.Component {
         currentUserId = {currentUserId}
         addBoard = {addBoard}
         hidePopOver = {this.hidePopOver}
+        resetInput = {this.resetInput}
       />
     );
   }

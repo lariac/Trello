@@ -11,9 +11,6 @@ class SignUpPanel extends React.Component {
     this.accountInformationValid = this.accountInformationValid.bind(this);
     this.handleUsernameEmailUniqueness = this.handleUsernameEmailUniqueness.bind(this);
 
-    /* SignUpPanel.defaultProps = {
-       listTitle: "Design Thinking Session"
-     }; */
   }
   handleOnChange(e) {
     this.props.onChange(e);
@@ -32,11 +29,9 @@ class SignUpPanel extends React.Component {
   }
 
   handleUsernameEmailUniqueness(e) {
-    console.log("ESTOY EN BLUR!");
     const inputValue = e.target.value;
     const inputName = e.target.name;
     if (inputValue != '') {
-      console.log("input value es: " + inputValue);
       this.props.verifyUsernameEmailUniqueness(inputValue, inputName);
     }
   }
@@ -84,7 +79,7 @@ class SignUpPanel extends React.Component {
                     onChange={this.handleOnChange}
                     value={this.props.userPassword} />
                   {this.props.errors.password && <span className="help-block"> {this.props.errors.password} </span>}
-                  <button className="btn btn-primary userInformation__logIn fontLogin" disabled={this.props.isLoading || this.props.invalidAccount}>Sign Up</button>
+                  <button className="btn btn-primary userInformation__logIn fontLogin" >Sign Up</button>
                 </form>
               </div>
             </div>

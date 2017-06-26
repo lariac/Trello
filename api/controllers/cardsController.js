@@ -33,7 +33,6 @@ function createCard(req, res) {
   const card = new Card(bodyCard);
   card.save(err => {
     if (!err) {
-      console.log("el id de la lista es: " + req.body.idList);
       List.findOneAndUpdate(
         { "_id": req.body.idList },
         {$push: {idCards: card._id}},
@@ -41,8 +40,6 @@ function createCard(req, res) {
 
         (error, list) => {
           if (!error) {
-
-            console.log('card!');
             res.status(201);
             res.json(list);
           }
@@ -77,9 +74,11 @@ function updateCard(req, res) {
 
 //Delete a card
 function deleteCard(req, res) {
-  Card.findByIdAndRemove({ _id: req.body._id }, req.body, (err, data) => {
+
+  Card.findByIdAndRemove({ _id: req.params._id }, req.body, (err, data) => {
     if (!err) {
-      res.status(204);
+      console.log("ENTRE A ELIMINAR CARTA!!");
+      res.status(201);
       res.json(data);
     }
     else {

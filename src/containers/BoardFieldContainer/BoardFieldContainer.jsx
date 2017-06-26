@@ -17,11 +17,9 @@ class BoardFieldContainer extends React.Component {
   }
 
   render() {
-    console.log("esto tiene el board field container: " + this.props.boards);
     const allBoards = this.props.boards;
     const { deleteBoard, authenticatedUserId, getBoardInformation} = this.props;
     return <ul className="boards-panel-wrapper boards-panel"> {allBoards.map((item) => {
-      console.log("estoy retornando un elemento!");
       return <li key={item._id} className="boards-panel-item"> <BoardField
         id={item._id}
         Boardtitle={item.title}

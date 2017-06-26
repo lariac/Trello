@@ -26,21 +26,16 @@ export default function Trello(state = initialState, action) {
     case actionsList.SIGNUPSUBMIT:
       return Object.assign({}, state, {
         isLoading: true
-        //  isFetching: true
       });
     case actionsList.SIGNUPSUBMIT_SUCCESS:
-      console.log("entre a suuuucesss");
       return Object.assign({}, state, {
         isLoading: false,
         signUpSuccess: true,
         errorsAccount: action.errorsAccount,
         currentUser: action.user
-        //   bretes: action.bretes,
-        //  isFetching: false
       });
     case actionsList.SIGNUPSUBMIT_FAILURE:
       return Object.assign({}, state, {
-        // isFetching: false,
         errorsAccount: action.errorsAccount,
         isLoading: false,
         signUpSuccess: false
@@ -62,7 +57,6 @@ export default function Trello(state = initialState, action) {
     case actionsList.GET_MEMBER_SUCCESS:
       return Object.assign({}, state, {
         isLoading: false,
-        //  user: action.user,
         errorsAccount: action.errorsAccount,
         invalidAccount: action.invalidAccount
       });
@@ -78,9 +72,7 @@ export default function Trello(state = initialState, action) {
         isLoading: true
       });
     case actionsList.SET_CURRENT_USER:
-      console.log("entre a suuuucesss");
       let authenticateUser = false;
-      console.log("NO TENGO QUE AUTENTICAR USUARIO!!!!!" + action.user);
       if (action.user == undefined) {
         authenticateUser = false;
       }
@@ -122,7 +114,6 @@ export default function Trello(state = initialState, action) {
       });
 
     case actionsList.GET_USER_BOARDS_FAILURE:
-      console.log("ESTOY EN FALLO!");
       return Object.assign({}, state, {
         isLoading: false,
         errorMessage: action.errorMessage
@@ -162,20 +153,17 @@ export default function Trello(state = initialState, action) {
 
 
     case actionsList.GET_BOARD:
-    console.log("ESTOY EN GET BOARD!!");
       return Object.assign({}, state, {
         isLoading: true
       });
 
     case actionsList.GET_BOARD_SUCCESS:
-    console.log("HICE LA ACCION DE GET BOARD SUCCESS!!");
       return Object.assign({}, state, {
         isLoading: false,
         openBoard: action.board
       });
 
     case actionsList.GET_BOARD_FAILURE:
-      console.log("ESTOY EN FALLO!");
       return Object.assign({}, state, {
         isLoading: false,
         errorMessage: action.errorMessage
@@ -188,7 +176,6 @@ export default function Trello(state = initialState, action) {
       });
 
     case actionsList.GET_BOARD_LIST_SUCCESS:
-    console.log("YA METI LISTAS EN LA VARIABLEEEEEEE BOAAARDLIST!!!");
       return Object.assign({}, state, {
         isLoading: false,
         boardList: action.boardList
@@ -248,13 +235,23 @@ export default function Trello(state = initialState, action) {
         isLoading: false,
         errorMessage: action.errorMessage
       });
+
+    case actionsList.DELETE_CARD:
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+
+    case actionsList.DELETE_CARD_SUCCESS:
+      return Object.assign({}, state, {
+        isLoading: false,
+      });
+
+    case actionsList.DELETE_CARD_FAILURE:
+      return Object.assign({}, state, {
+        isLoading: false,
+        errorMessage: action.errorMessage
+      });
       
-      
-      
-
-
-
-
     default:
       return state;
   }

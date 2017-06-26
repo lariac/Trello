@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../../components/Card/Card'
 import { connect } from 'react-redux'
+import { deleteCard } from '../../redux/actionCreators'
 
 class CardContainer extends React.Component {
   constructor(props) {
@@ -10,33 +11,38 @@ class CardContainer extends React.Component {
     };
   }
   render() {
-        console.log("ESTOY EN CAAAAARD CONTAINEEEER!");
-    const {cardDescription, cardDueDate, currentUserName } = this.props;
+    const {cardDescription, cardDueDate, currentUserName, idCard, deleteCard, openBoard } = this.props;
 
 
-    return <Card cardDescription={cardDescription} cardDueDate={cardDueDate} currentUserName = {currentUserName} />
-  
-  
+    return <Card cardDescription={cardDescription} 
+    cardDueDate={cardDueDate} 
+    idCard={idCard} 
+    currentUserName = {currentUserName}
+    deleteCard = {deleteCard}
+    openBoard = {openBoard[0]}/>
   }
 };
 
 
 const mapStateToProps = state => {
   return {
-    boardListList: state.boardList,
+    openBoard: state.openBoard ? state.openBoard: [],
     currentUserName: state.currentUser.name
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+   deleteCard: (idCard, idBoard) => dispatch(deleteCard(idCard, idBoard))
   };
 };
+
 
 CardContainer.defaultProps = {
   boardList: [],
   cardDescription: "",
   cardDueDate: "",
-  currentUserName: ""
+  currentUserName: "",
+  idCard: ""
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);

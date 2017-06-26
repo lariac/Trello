@@ -25,23 +25,17 @@ class List extends React.Component {
 
   handleAddCard(e) {
     e.preventDefault();
-  /*  console.log("el id de la lista es: " + this.props.list._id);
-    console.log("el contenido de la caja de texto es: " + this.props.textAreaContent);
-    const idList =  this.props.list._id; */
     const cardInformation = {idList: this.props.list._id, description: this.props.textAreaContent, idBoard: this.props.openBoard._id, idMembers:[this.props.authenticatedUserId] }
     this.props.addCard(cardInformation);
     this.props.hideAddCardEdition();
   }
 
   handleDeleteList() {
-    // const idBoard = this.props.boardList[0]._id;
-    console.log("el id del board es: ");
     const idBoard = this.props.openBoard._id;
     this.props.deleteList(this.props.idList, idBoard);
   }
 
   handleOnChange(e) {
-    console.log("ENTRE A HANDLE ON CHANGE!!");
     e.preventDefault();
     let textAreaValue = e.target.value;
     this.props.onChange(textAreaValue);
@@ -64,16 +58,13 @@ class List extends React.Component {
           </div>
           <div className="list-panel-card">
 
-            {console.log("boardlist es: ")}
-            {console.log(boardList)}
-
             {list.idCards.map((item, list) => {
-              console.log(item)
               ++counter;
               return <CardContainer key={counter}
                 cardDescription={item.description}
                 cardDueDate={item.dueDate}
-                userName={item.idMembers[0].charAt(0)} />
+                userName={item.idMembers[0].charAt(0)} 
+                idCard={item._id} />
             })}
 
             <div className={this.props.displayNewCardEdition}>
@@ -123,7 +114,8 @@ List.defaultProps = {
   cardDueDate: "",
   displayAddCard: "show-add-card",
   displayNewCardEdition: "hide-new-card-edition",
-  textAreaContent: ""
+  textAreaContent: "",
+  idCard: ""
 }
 
 List.propTypes = {

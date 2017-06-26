@@ -1,1 +1,1 @@
-module.exports =  {jwtSecret: 'sooomesecreeeetekeeeeeey' }
+module.exports =  {jwtSecret: 'thisismysecretdummykey' }

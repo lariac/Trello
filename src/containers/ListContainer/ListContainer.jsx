@@ -32,7 +32,6 @@ class ListContainer extends React.Component {
   }
 
   render() {
-    console.log("ESTOY RENDERIZANDO UN LIST CONTAINER!!!s");
     const { boardList, listTitle, list, idList, deleteList, openBoard, showAddCardEdition, onChange, authenticatedUserId, addCard, hideAddCardEdition  } = this.props
     return <List listTitle ={listTitle} boardList={boardList} 
     list = {list} 

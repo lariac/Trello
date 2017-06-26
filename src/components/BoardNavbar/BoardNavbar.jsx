@@ -19,7 +19,6 @@ class BoardNavbar extends React.Component {
 
     if(this.props.userName != undefined && this.props.userName.length > 8){
       userName = user.substring(0, 8- endingUserName.length ) + endingUserName;
-      console.log("userName es: " + userName);
     }
 
     return (
@@ -90,7 +89,6 @@ class BoardNavbar extends React.Component {
                 <div data-toggle="dropdown" className="dropdown-toggle dropdown-font">{userName}<b className="caret dropdown-style__caret"></b></div>
                 <ul className="dropdown-menu">
                   <li><a href="#" onClick={this.handleLogOut}>Log Out</a></li>
-                  <li><a href="#">Another action</a></li>
                 </ul>
               </div>
             </li>

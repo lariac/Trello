@@ -10,17 +10,16 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 
 import jwt from 'jsonwebtoken';
 
+const API_URL = 'http://localhost:3000/api/';
+
 export function signUpSubmit(userAccountInformation) {
-  // const memberData = {name: userAccountInformation.userName, email: userAccountInformation.userEmail, password: userAccountInformation.userPassword}
   return function (dispatch) {
     dispatch({
       type: actionType.SIGNUPSUBMIT
     });
-    console.log("el member es: " + userAccountInformation.name);
     axios
-      .post('http://localhost:3000/api/member', userAccountInformation)
+      .post(API_URL+'member', userAccountInformation)
       .then(result => {
-        console.log("insercion exitosaaa");
         const loginInformation = {name: userAccountInformation.name, password: userAccountInformation.password }
         dispatch(loginSubmit(loginInformation));
         dispatch({
@@ -31,7 +30,6 @@ export function signUpSubmit(userAccountInformation) {
         return Promise.resolve();
       })
       .catch(error => {
-        console.log("ESTOY EN ERROR!!");
         dispatch({
           type: actionType.SIGNUPSUBMIT_FAILURE,
           // error 
@@ -52,13 +50,12 @@ export function setErrorsAccount(validationResult) {
 }
 
 export function verifyUsernameEmailUniqueness(inputValue, inputName) {
-  console.log("verificar emaaaail y usernameeeee!!" + inputValue);
   return function (dispatch) {
     dispatch({
       type: actionType.VERIFY_EMAIL_UNIQUENESS,
     });
     axios
-      .get('http://localhost:3000/api/member/' + inputValue)
+      .get(API_URL+'member' + inputValue)
       .then(result => {
         let errors = {};
         let invalidInformation = false;
@@ -74,7 +71,6 @@ export function verifyUsernameEmailUniqueness(inputValue, inputName) {
           invalidInformation = true;
         }
         else {
-          console.log("entre a elseeee!");
           errors.name = "";
           errors.email = "";
           errors.valid = true;
@@ -108,7 +104,6 @@ export function setCurrentUser(user) {
 }
 
 export function logOut() {
-  console.log("ESTOY EN ACTION CREATOR DE LOG OUT");
   return function (dispatch) {
     localStorage.removeItem('jwtToken');
      setAuthorizationToken(false)
@@ -124,20 +119,17 @@ export function logOut() {
 }
 
 export function loginSubmit(userAccountInformation) {
-  console.log("ESTOY EN LOGIN SUBMIT!");
   return function (dispatch) {
     dispatch({
       type: actionType.LOGINSUBMIT,
     });
     axios
-      .post('http://localhost:3000/api/auth/', userAccountInformation)
+      .post(API_URL+'auth/', userAccountInformation)
       .then(result => {
         const token = result.data.token;
         setAuthorizationToken(token);
         localStorage.setItem('jwtToken', token);
         setCurrentUser(jwt.decode(token));
-        console.log(jwt.decode(token));
-        console.log(result + "esto tiene result de toooookeeeeeeeen " + result.data);
         dispatch({
           type: actionType.SET_CURRENT_USER,
           user: jwt.decode(token),
@@ -146,7 +138,6 @@ export function loginSubmit(userAccountInformation) {
         });
       })
       .catch(error => {
-        console.log("error es: " + error.response.data[0]);
         dispatch({
           type: actionType.LOGINSUBMIT_FAILURE,
           loginError: error.response.data
@@ -157,23 +148,19 @@ export function loginSubmit(userAccountInformation) {
 }
 
 export function getUserBoards(userId){
-  console.log("ENTRE A GET USER BOARDS :D" + userId);
   return function (dispatch) {
     dispatch({
       type: actionType.GET_USER_BOARDS,
     });
     axios
-      .get('http://localhost:3000/api/board/user/' + userId)
+      .get(API_URL+'board/user/' + userId)
       .then(result => {
-        console.log("estoy en el then de exito! user boards ");
-        console.log(result.data);
         dispatch({
           type: actionType.GET_USER_BOARDS_SUCCESS,
           boards: result.data
         });
       })
       .catch(error => {
-         console.log("estoy en error de traer boards!!" + error);
         dispatch({
           type: actionType.GET_USER_BOARDS_FAILURE,
           errorMessage: error
@@ -188,9 +175,8 @@ export function addBoard(boardInformation){
       type: actionType.CREATE_BOARD,
     });
     axios
-      .post('http://localhost:3000/api/board/', boardInformation)
+      .post(API_URL+'board/', boardInformation)
       .then(result => {
-        console.log(result);
         
         dispatch(getUserBoards(boardInformation.idMembers[0]));
 
@@ -209,15 +195,13 @@ export function addBoard(boardInformation){
 }
 
 export function deleteBoard(boardId, idAuthenticateMember ){
-  console.log("el board es: " + boardId);
 return function (dispatch) {
     dispatch({
       type: actionType.DELETE_BOARD,
     });
     axios
-      .delete('http://localhost:3000/api/board/' + boardId)
+      .delete(API_URL+'board/' + boardId)
       .then(result => {
-        console.log(result);
         
         dispatch(getUserBoards(idAuthenticateMember));
 
@@ -235,24 +219,19 @@ return function (dispatch) {
 }
 
 export function getBoardList(boardId){
-  console.log("ESTOY OBTENIENDO LAS LISTAS DEL BOARD!!");
-  console.log("boardId es: " + boardId);
   return function (dispatch) {
     dispatch({
       type: actionType.GET_BOARD_LIST,
     });
     axios
-      .get('http://localhost:3000/api/list/' + boardId)
+      .get(API_URL+'list/' + boardId)
       .then(result => {
-        console.log("estoy en el then de exito de listaaassss!");
-        console.log(result.data);
         dispatch({
           type: actionType.GET_BOARD_LIST_SUCCESS,
           boardList: result.data
         });
       })
       .catch(error => {
-         console.log("estoy en error de traer listaaaaasss!!" + error);
         dispatch({
           type: actionType.GET_BOARD_LIST_FAILURE,
           errorMessage: error
@@ -263,13 +242,12 @@ export function getBoardList(boardId){
 
 
 export function getBoardInformation(boardId){
-  console.log("estoy trayendo board info con " + boardId);
   return function (dispatch) {
     dispatch({
       type: actionType.GET_BOARD,
     });
     axios
-      .get('http://localhost:3000/api/board/' + boardId)
+      .get(API_URL+'board/' + boardId)
       .then(result => {
         dispatch(getBoardList(boardId));
         dispatch({
@@ -292,9 +270,8 @@ export function addList(listInformation){
       type: actionType.CREATE_LIST,
     });
     axios
-      .post('http://localhost:3000/api/list/', listInformation)
+      .post(API_URL+'list/', listInformation)
       .then(result => {
-        console.log(result);
         
         dispatch(getBoardList(listInformation.idBoard));
 
@@ -318,9 +295,8 @@ export function deleteList(idList, idBoard){
       type: actionType.DELETE_LIST,
     });
     axios
-      .delete('http://localhost:3000/api/list/'+ idList)
+      .delete(API_URL+'list/'+ idList)
       .then(result => {
-        console.log(result);
         
         dispatch(getBoardList(idBoard));
 
@@ -345,9 +321,8 @@ export function addCard(cardInformation){
       type: actionType.CREATE_CARD,
     });
     axios
-      .post('http://localhost:3000/api/card/', cardInformation)
+      .post(API_URL+'card/', cardInformation)
       .then(result => {
-        console.log(result);
         
         dispatch(getBoardList(cardInformation.idBoard));
 
@@ -359,6 +334,31 @@ export function addCard(cardInformation){
       .catch(error => {
         dispatch({
           type: actionType.CREATE_CARD_FAILURE,
+          errorMessage: error
+        });
+      })
+  }
+}
+
+export function deleteCard(idCard, idBoard){
+  return function (dispatch) {
+    dispatch({
+      type: actionType.DELETE_CARD,
+    });
+    axios
+      .delete(API_URL+'card/'+ idCard)
+      .then(result => {
+
+        dispatch(getBoardList(idBoard));
+
+        dispatch({
+          type: actionType.DELETE_CARD_SUCCESS,
+         // createdBoard: result.data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionType.DELETE_CARD_FAILURE,
           errorMessage: error
         });
       })

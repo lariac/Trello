@@ -25,10 +25,6 @@ class BoardsPanelContainer extends React.Component {
 
   componentWillMount() {
 
-    console.log("ENTRE A COMPONENT DID MOUUUUUUNT!!");
-
-   // console.log("ENTRE A ");
-
    if(this.props.authenticatedUserId != undefined){
         this.props.getBoards(this.props.authenticatedUserId);
    }
@@ -41,7 +37,6 @@ class BoardsPanelContainer extends React.Component {
 
 
   render() {
-      console.log("RENDERIZAR!!");
     const { boards, openBoard } = this.props;
     return (
       <BoardsPanel boards={boards} />

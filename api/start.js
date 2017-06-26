@@ -1,20 +1,23 @@
-
 const mongoose = require('mongoose');
 const app = require('./app');
 require('dotenv').config();
 
+
+
 mongoose.Promise = global.Promise;
 
-//const port = process.env.PORT;
-const uriString = process.env.DB || 'localhost:27017/Trello';
+const port = process.env.PORT;
+const dbConnection = process.env.DB || 'localhost:27017/Trello';
 
-app.listen(3000, () => {
+console.log("port is " + port);
+
+app.listen( port, () => {
   console.log(`Server running on port`);
 });
 
 
 try {
-    mongoose.connect('mongodb://localhost:27017/Trello'); //- starting a db connection
+    mongoose.connect(dbConnection); //- starting a db connection
 }catch(err) {
-    mongoose.createConnection('mongodb://localhost:27017/Trello'); //- starting another db connection
+    mongoose.createConnection(dbConnection); //- starting another db connection
 }

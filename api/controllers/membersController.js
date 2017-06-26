@@ -4,7 +4,6 @@ const validateInputData = require('../shared/validations/signUpValidation')
 const encryptTool = require('bcrypt');
 
 function validateDataUniqueness(data, validations) {
-  console.log("ESTOY ENTRANDO EN VALIDATE DATA!!!!");
   var errors = validations(data);
 
   var self = this;
@@ -12,7 +11,6 @@ function validateDataUniqueness(data, validations) {
     Member.where({ email: data.email }).exec((err, member) => {
 
       if (member.length > 0) {
-        console.log("errors!!" + errors);
         errors.email = "*Email already in use by another account";
         errors.valid = false;
         resolve(errors);
@@ -28,14 +26,11 @@ function validateDataUniqueness(data, validations) {
     Member.where({ name: data.name }).exec((err, member) => {
 
       if (member.length > 0) {
-        console.log('ENTRE AL IIIIIIF!!!!');
-        console.log("errors!!" + errors);
         errors.name = "*Username already in use by another account";
         errors.valid = false;
         resolve(errors);
       }
       else {
-        console.log('ENTRE AL EEEEEEELSEEEEEEEE!!!!');
         resolve(errors);
       }
     })
@@ -48,7 +43,6 @@ function validateDataUniqueness(data, validations) {
 
 //Get a specific member
 function getMember(req, res) {
-  console.log("Esto tiene el request: " + req.params);
   Member.findById(req.params._id).exec(function (err, data) {
     if (!err) {
       res.status(200);
@@ -62,7 +56,6 @@ function getMember(req, res) {
 }
 
 function getMemberByUsernameEmail(req, res) {
-  console.log("req.params es: " + req.params.identifier);
 
   var promiseEmailUniqueness = new Promise((resolve, reject) => {
     Member.where({ email: req.params.identifier }).exec((err, member) => {
@@ -70,7 +63,6 @@ function getMemberByUsernameEmail(req, res) {
         resolve(member);
       }
       else {
-        console.log('ENTRE AL EEEEEEELSEEEEEEEE EMAIL!!!!');
         member = {};
         resolve(member);
       }
@@ -84,7 +76,6 @@ function getMemberByUsernameEmail(req, res) {
         resolve(member);
       }
       else {
-        console.log('ENTRE AL EEEEEEELSEEEEEEEE USERNAME!!!!');
         member = {};
         resolve(member);
       }
@@ -92,37 +83,19 @@ function getMemberByUsernameEmail(req, res) {
   });
 
    return Promise.all([promiseEmailUniqueness, promiseUserNameUniqueness ]).then((member) => {
-     console.log('member es: ' + member.data);
     res.json(member);
   });
-
-
-  
-  
-  
-  
-  
- /* Member.where({ email: req.params.email }).exec((err, member) => {
-    if(!err){
-      res.json(member);
-    }
-    else{
-      res.json(err);
-    }
-  }); */
 }
 
 
 //Add a member 
 function createMember(req, res) {
-  console.log('ESTOY EN CREATE MEMBER!!!');
   validateDataUniqueness(req.body, validateInputData).then((validationResult) => {
     if (validationResult[0].valid === false) {
       res.status(400);
       res.json(validationResult[0]);
     }
     else {
-      console.log("Estoy en el else :D");
       const memberData = req.body;
       let hash = encryptTool.hashSync(memberData.password, 10);
       memberData.password = hash;
@@ -171,19 +144,6 @@ function deleteMember(req, res) {
     }
 
   });
-
-
-  /* console.log("el miembro a eliminar es: " + req.params._id);
-   Member.findByIdAndRemove({ _id: req.params._id }).exec((err, data) => {
-     if (!err) {
-       res.status(204);
-       res.json(data);
-     }
-     else {
-       res.status(500);
-       res.json(err);
-     } 
-   }); */
 }
 
 

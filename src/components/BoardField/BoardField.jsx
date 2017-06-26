@@ -10,24 +10,18 @@ class BoardField extends React.Component {
 
     };
 
-this.handleDeleteBoard = this.handleDeleteBoard.bind(this);
-this.handleViewBoard = this.handleViewBoard.bind(this);
-  //  this.deleteBoard = this.deleteBoard.bind(this);
+    this.handleDeleteBoard = this.handleDeleteBoard.bind(this);
+    this.handleViewBoard = this.handleViewBoard.bind(this);
   }
 
   handleDeleteBoard(e) {
     e.stopPropagation();
-    console.log("authenticate user: " + this.props.authenticatedUserId);
     this.props.deleteBoard(this.props.id, this.props.authenticatedUserId);
   }
 
-  handleViewBoard(){
-    //alert('hola');
-  //  const url = "/board/" +  this.props.id;
-
-  //  this.context.router.history.push("/board/" +  this.props.id);
-this.props.getBoardInformation(this.props.id);
-this.context.router.history.push("/board/" +  this.props.id);
+  handleViewBoard() {
+    this.props.getBoardInformation(this.props.id);
+    this.context.router.history.push("/board/" + this.props.id);
   }
 
   render() {

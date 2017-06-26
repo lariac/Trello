@@ -16,7 +16,7 @@ router.delete('/board/:_id', authenticate, boardsController.deleteBoard);
 router.get('/card', authenticate, cardsController.getCards);
 router.post('/card', cardsController.createCard);
 router.put('/card/:id', cardsController.updateCard);
-router.delete('/card', authenticate,  cardsController.deleteCard);  
+router.delete('/card/:_id', authenticate,  cardsController.deleteCard);  
 
 router.get('/list/:_id', listsController.getListByBoardId);
 //router.get('/list/:_id', foldersController.getFolderById);

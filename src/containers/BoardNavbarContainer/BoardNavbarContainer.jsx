@@ -17,7 +17,6 @@ class BoardNavbarContainer extends React.Component {
     }
   }
   componentDidUpdate() {
-    console.log('COMPONENT UPDATE!!' + this.props.signUpSuccess);
 
     if (this.props.isAuthenticated != undefined && this.props.isAuthenticated === false) {
       this.context.router.history.push('/home')
