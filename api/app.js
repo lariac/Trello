@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
-//app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 //app.use: morgan, bod-parser:yjson, body-parser:urlenconde, enableCors
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
