@@ -33,4 +33,8 @@ router.delete('/member/:_id', authenticate, membersController.deleteMember);
 
 router.post('/auth', authController.setUserAuthentication);
 
+router.get('/', function(req, res){
+    res.json({message:'hola'});
+})
+
 module.exports = router;

@@ -15,7 +15,6 @@ class Routes extends React.Component {
    <Router>
     <div>
       <Switch>
-      {console.log("ESTOY EN EL SWITCH")}
       <Route exact path='/' component={ HomeContainer } />
       <Route path='/home' component={ HomeContainer } />
       <Route path='/login' render={() => ( <LoginPanelContainer   />  )} />
