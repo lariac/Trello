@@ -31,15 +31,23 @@ class AddListContainer extends React.Component {
       
     }
   }
+
+  //Method to show the popover in order to create a new list 
   showPopOver(){
     this.setState({displayAddList: "hide-add-list", displayPopOver: "show-pop-over"});
   }
+
+  //Method to handle the input value of the list's title when a list is being created
   onChange(inputValue){
      this.setState({listTitle: inputValue});
   } 
+
+  //Method to hide popover that shows the option to create a new list
   hidePopOver(){
     this.setState({displayAddList: "show-add-list", displayPopOver: "hide-pop-over"});
   }
+
+  //Method to reset input of the list's title 
   resetInput(){
       this.setState({listTitle:""});
   }
@@ -67,7 +75,6 @@ const mapStateToProps = state => {
   return {
     currentUserId: state.currentUser.id,
     openBoard : state.openBoard ? state.openBoard: []
-    //   invalidAccount: state.invalidAccount
   }
 }
 

@@ -18,9 +18,9 @@ export function signUpSubmit(userAccountInformation) {
       type: actionType.SIGNUPSUBMIT
     });
     axios
-      .post(API_URL+'member', userAccountInformation)
+      .post(API_URL+'member/', userAccountInformation)
       .then(result => {
-        const loginInformation = {name: userAccountInformation.name, password: userAccountInformation.password }
+        const loginInformation = {nameEmail: userAccountInformation.name, password: userAccountInformation.password }
         dispatch(loginSubmit(loginInformation));
         dispatch({
           type: actionType.SIGNUPSUBMIT_SUCCESS,
@@ -55,7 +55,7 @@ export function verifyUsernameEmailUniqueness(inputValue, inputName) {
       type: actionType.VERIFY_EMAIL_UNIQUENESS,
     });
     axios
-      .get(API_URL+'member' + inputValue)
+      .get(API_URL+'member/' + inputValue)
       .then(result => {
         let errors = {};
         let invalidInformation = false;
@@ -141,7 +141,6 @@ export function loginSubmit(userAccountInformation) {
         dispatch({
           type: actionType.LOGINSUBMIT_FAILURE,
           loginError: error.response.data
-          //errorsAccount: error.response.data
         });
       })
   }

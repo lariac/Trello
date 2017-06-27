@@ -19,14 +19,17 @@ class ListContainer extends React.Component {
 
   }
 
+  //Method to show the option of the creation of a new card in a specific list
   showAddCardEdition(){
     this.setState({displayAddCard: "hide-add-card", displayNewCardEdition: "show-new-card-edition"  });
   }
 
+  //Method to handle the text area content of the card being created
   onChange(inputValue){
     this.setState({textAreaContent: inputValue });
   }
 
+  //Method to hide the option of the creation of a new card in a specific list
   hideAddCardEdition(){
     this.setState({displayAddCard: "show-add-card", displayNewCardEdition: "hide-new-card-edition"  });
   }

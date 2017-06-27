@@ -55,7 +55,7 @@ class AddBoardField extends React.Component {
             <div className="add-pop-over-header">
               <span className="add-pop-over-header-title">Create Board</span>
               <a href="#" className="add-pop-over-header-close-btn">
-                <img src={require("../../img/close-Icon.svg")} className="icon-size" />
+                <img src={require("../../img/close-Icon.svg")} className="icon-size" onClick={this.props.hidePopOver} />
               </a>
             </div>
             <div className="add-pop-over-content">

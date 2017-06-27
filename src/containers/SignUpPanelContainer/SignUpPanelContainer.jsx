@@ -15,32 +15,28 @@ class SignUpPanelContainer extends React.Component {
       userPassword: ""
     };
     this.onChange = this.onChange.bind(this);
-    this.setErrors = this.setErrors.bind(this);
     SignUpPanelContainer.propTypes = {
       isLoading: bool,
       errors: object,
       signUpSuccess: bool,
       setErrors: func,
-      validAccount: bool
+      validAccount: bool,
+      isAuthenticated: bool
     }
   }
 
-
+ //Method to handle the input's value for the name, email and password
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  setErrors(data) {
-  //  console.log("estos son los errores" + data);
-  }
   componentDidUpdate() {
-
-    if (this.props.signUpSuccess != undefined && this.props.signUpSuccess===true) {
+    if (this.props.isAuthenticated != undefined && this.props.isAuthenticated === true) {
       this.context.router.history.push('/board')
     }
   }
-    componentWillMount() {
 
-    if (this.props.signUpSuccess != undefined && this.props.signUpSuccess===true) {
+  componentWillMount() {
+    if (this.props.isAuthenticated != undefined && this.props.isAuthenticated === true) {
       this.context.router.history.push('/board')
     }
   }
@@ -53,8 +49,8 @@ class SignUpPanelContainer extends React.Component {
         onChange={this.onChange}
         signUpSubmit={signUpSubmit}
         errors={errors}
-        isLoading={isLoading}
         setErrors={setErrors}
+        isLoading={isLoading}
         verifyUsernameEmailUniqueness = {verifyUsernameEmailUniqueness}
         invalidAccount = {invalidAccount}
         {... this.state} />
@@ -67,7 +63,8 @@ const mapStateToProps = state => {
     errors: state.errorsAccount,
     isLoading: state.isLoading,
     signUpSuccess: state.signUpSuccess,
-    invalidAccount: state.invalidAccount
+    invalidAccount: state.invalidAccount,
+    isAuthenticated: state.isAuthenticated
   }
 }
 

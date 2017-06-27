@@ -16,7 +16,6 @@ const memberSchema = new mongoose.Schema({
 });
 
 memberSchema.post('remove', function (doc) {
-   console.log("ENTRE AL ESQUEMA!");
     Board.remove({ idMembers: this._id }).exec();
 }); 
 

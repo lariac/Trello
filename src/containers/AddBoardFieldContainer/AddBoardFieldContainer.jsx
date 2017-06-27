@@ -29,15 +29,23 @@ class AddBoardFieldContainer extends React.Component {
       resetInput: func
     }
   }
+
+  //Method to show the popover in order to create a new board 
   showPopOver(){
     this.setState({displayAddField: "hide-add-field", displayPopOver: "show-pop-over"});
   }
+
+  //Method to handle the input value for the title during the creation of a new board
   onChange(inputValue){
      this.setState({boardTitle: inputValue});
   } 
+
+  //Method to hide the popover that shows the option to create a new board
   hidePopOver(){
     this.setState({displayAddField: "show-add-field", displayPopOver: "hide-pop-over"});
   }
+
+  //Method to reset the input value for the title of the board
    resetInput(){
       this.setState({boardTitle:""});
   }
@@ -62,7 +70,6 @@ class AddBoardFieldContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUserId: state.currentUser.id
-    //   invalidAccount: state.invalidAccount
   }
 }
 

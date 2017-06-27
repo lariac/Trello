@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from '../App/App'
 import SignUpPanel from '../SignUpPanel/SignUpPanel'
-import Home from '../Home/Home'
+import HomeContainer from '../../containers/HomeContainer/HomeContainer'
 import BoardContainer from '../../containers/BoardContainer/BoardContainer'
 import BoardsPanelContainer from '../../containers/BoardsPanelContainer/BoardsPanelContainer'
 
@@ -16,15 +16,12 @@ class Routes extends React.Component {
     <div>
       <Switch>
       {console.log("ESTOY EN EL SWITCH")}
-      <Route exact path='/' component={ Home } />
-      <Route path='/home' component={ Home } />
+      <Route exact path='/' component={ HomeContainer } />
+      <Route path='/home' component={ HomeContainer } />
       <Route path='/login' render={() => ( <LoginPanelContainer   />  )} />
       <Route path='/signup'  render={() => ( <SignUpPanelContainer   />  )} />
       <Route exact path='/board' component={ BoardsPanelContainer } />
       <Route path='/board/:id' component={ BoardContainer } />
-   
-      
-      
       </Switch>
     </div>
   </Router>

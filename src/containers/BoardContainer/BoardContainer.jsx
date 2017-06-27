@@ -30,12 +30,6 @@ const mapStateToProps = state => {
   }
 }
 
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-  };
-};
-
 BoardContainer.defaultProps={
   boardList: []
 }
@@ -45,5 +39,5 @@ BoardContainer.PropTypes = {
   boardList: Array
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardContainer);
+export default connect(mapStateToProps, null)(BoardContainer);
 

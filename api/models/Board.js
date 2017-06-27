@@ -9,7 +9,6 @@ const boardSchema = new mongoose.Schema({
 });
 
 boardSchema.post('remove', function (doc) {
-   console.log("ENTRE AL ESQUEMA de BORRAR BOARD!");
     List.remove({ idBoard: this._id }).exec();
     Card.remove({ idBoard: this._id }).exec();
 });

@@ -9,7 +9,6 @@ const listSchema = new mongoose.Schema({
 });
 
 listSchema.post('remove', function (doc) {
-    console.log("ENTRE AL ESQUEMA de BORRAR LISTA!");
     Card.remove({ idList: this._id }).exec();
 });
 

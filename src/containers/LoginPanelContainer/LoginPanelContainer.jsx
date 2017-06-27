@@ -15,7 +15,6 @@ class LoginPanelContainer extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
 
-    //  this.setErrors = this.setErrors.bind(this);
     LoginPanelContainer.propTypes = {
       isLoading: bool,
       errors: object,
@@ -29,6 +28,7 @@ class LoginPanelContainer extends React.Component {
     }
   }
 
+  //Method to handle the value of the input's name/email and password
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -57,8 +57,6 @@ class LoginPanelContainer extends React.Component {
         setErrors={setErrors}
         loginError={loginError}
         loginSuccess={loginSuccess}
-        //  verifyEmailUniqueness={verifyEmailUniqueness}
-        //    invalidAccount={invalidAccount}
         {... this.state} />
     );
   }
@@ -71,7 +69,6 @@ const mapStateToProps = state => {
     loginSuccess: state.loginSuccess,
     loginError: state.loginError,
     isAuthenticated: state.isAuthenticated
-    //   invalidAccount: state.invalidAccount
   }
 }
 
@@ -79,7 +76,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loginSubmit: (userInformation) => dispatch(loginSubmit(userInformation)),
     setErrors: (validationResult) => dispatch(setErrorsAccount(validationResult)),
-    //   verifyEmailUniqueness: (inputValue) => dispatch(verifyEmailUniqueness(inputValue))
   };
 };
 

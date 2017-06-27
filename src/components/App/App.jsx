@@ -15,7 +15,6 @@ class App extends React.Component {
 
 
   render() {
-    console.log("estoy en render del APP!");
     if (localStorage.jwtToken) {
       setAuthorizationToken(localStorage.jwtToken);
       store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));

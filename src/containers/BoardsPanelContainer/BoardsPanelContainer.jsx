@@ -34,8 +34,6 @@ class BoardsPanelContainer extends React.Component {
    
   }
 
-
-
   render() {
     const { boards, openBoard } = this.props;
     return (
