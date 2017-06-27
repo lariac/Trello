@@ -1,0 +1,60 @@
+.navbar-color{
+    background-color: #0079bf;
+}
+
+.navbar-trello-logo{
+    width:8.125rem;
+    height: 2.5rem;
+    margin-top: calc( (4.5rem - 2.5rem) / 2);
+    margin-left: 1.5rem;
+}
+
+.btn.navbar-login-button{
+    background: linear-gradient(to bottom, #026aa7 0, #026aa1 100%);
+    border-radius: .4rem;
+    box-shadow: 0 2px 0 #026ab6;;
+    color: #4d4d4d;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.1rem;
+    margin: 0 .25rem;
+    padding: .7rem 1.6rem;
+   // text-decoration: none;
+    vertical-align: center;
+    color: #fff;
+    border: none;
+    text-align: center;
+    font-family: "Arial" sans-serif;
+    margin-right: -1.5rem;
+   
+}
+
+.btn.navbar-signup-button{
+    background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+    box-shadow: 0 2px 0 #3f6f21;
+    color: #fff;
+    font-weight: bold;
+    border-radius: .4rem;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.1rem;
+    margin: 0 .25rem;
+    padding: .7rem 1.6rem;
+    margin-left: 1rem;
+
+ //   text-decoration: none;
+    vertical-align: top;
+     border: none;
+      font-family: "Arial" sans-serif;
+ 
+} 
+
+
+
+
+
+/*.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+   // background-color: #FFFF00;
+    color: #FFC0CB;
+} */
+

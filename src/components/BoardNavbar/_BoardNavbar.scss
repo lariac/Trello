@@ -1,0 +1,328 @@
+
+.navbar-brand-board-logo{
+    /* Calc the difference between the margin left and the left padding (15px = 0.9375rem): 
+    (3.75rem - 0.9375 = 2.8125  ) */
+  //  margin-left: 2.8125rem;
+    margin-left: 3.75rem;
+//    margin-left: 4.6875vw;
+
+    //Calculate the difference between the title's margin top and the logo's margin top:
+    /*(1.5rem - 1.75rem = -0.625) */ 
+    margin-top: -0.25rem;
+    width: 1.25rem;
+    height: 1.25rem; 
+    position: relative;
+ //   z-index: 3;
+}
+
+
+.navbar-brand-board-title{
+    color: #2c2b2c;
+    font-family: "Helvetica Neue";
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 0.9375vw;
+    width: 3.188rem;
+    line-height: 1.688rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.313rem;
+    margin-right:  3.046875vw;
+}
+
+.form-control-search{
+    width: 100%;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; 
+    height: 2.125rem;
+    &__button{
+        display: inline-block;
+        margin-bottom: 0;
+        touch-action: manipulation;
+        cursor: pointer;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        user-select: none;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+    }
+    &__image{
+            height: 0.8125rem;
+            width: 0.8125rem;
+    }
+
+}
+
+.form-control-style{
+    width: 2.625rem;
+    height: 2.125rem;
+    &__button{
+        background-color: #4e88ff;
+        height: 2.125rem;
+        margin-top: 1.188rem;
+        margin-bottom: 1.188rem;
+
+    }
+    &__image{
+        height: 0.8125rem;
+        width: 0.8125rem;
+    }
+}
+
+.navbar-search{
+    width: 15.63rem;
+    margin-top: 1.188rem;
+    margin-bottom: 1.188rem;
+    &__text{
+        font-family: "Helvetica Neue" sans-serif;
+        font-size: 0.875rem;
+        font-weight: 400;
+        padding-left: 1rem;
+    }
+}
+
+
+.navbar-logo{
+    width: 4.438rem;
+    height: 1.25rem;
+    margin-left: 13.4375vw;
+    margin-top: 1.625rem;
+    margin-bottom: 1.625rem;
+    margin-right: 23.828125vw;
+}
+
+.navbar-logo-display{
+    display: inline;
+}
+
+.navbar-form-display{
+    display: inline;
+}
+
+.navbar-form-collapse-display{
+    display: none;
+}
+
+.navbar-button{
+    background-color: transparent;
+    padding: 0rem;
+    border: 0;
+    background-size:  1.313rem 1.313rem;
+    padding: 0rem;
+    border: none;
+    width: 1.313rem;
+    height: 1.313rem;
+    margin-top: 1.625rem;
+    margin-bottom: 1.563rem;
+    margin-right: 2.109375vw;
+    
+    &__add{
+        background: url('../../img/add-Icon.svg') no-repeat left center; 
+    }
+    &__important{
+         background: url('../../img/important-Icon.svg') no-repeat left center; 
+    }
+    &__bell{
+        background: url('../../img/bell-Icon.svg') no-repeat left center; 
+        background-size:  1.188rem 1.375rem;
+        width: 1.188rem;
+        height: 1.375rem;
+        margin-top: 1.625rem;
+        margin-bottom: 1.5rem;
+        margin-right: 3.203125vw;
+        background-color: transparent;
+        padding: 0rem;
+        border: 0;
+    }
+}
+
+.dropdown-style{
+    color: #6a6a6a;
+    font-family: "Helvetica Neue" sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    line-height: 1.688rem;
+    width: auto;
+    margin-top: 1.375rem;
+    margin-bottom: 1.375rem;
+    margin-right: 0rem;
+ 
+
+    &__caret{ 
+        margin-left: 0.859375vw;
+        width: 0.5625rem;
+        height: 0.3125rem;
+    }
+
+    
+}
+
+.navbar-toggle-button{
+    background-color: white;
+    &__icon-bar{
+         background-color: black;
+    }
+}
+
+.navbar-content-division{
+    background: #D6DADC;
+    border: 0;
+    color: #D6DADC;
+    height: 1px;
+    margin: 9pt 0;
+    width: 100%
+} 
+
+.navbar-content-division-display{
+    display: none;
+}
+
+.input-group-btn:last-child > .form-control-style__button{
+    z-index: 2;
+    margin-left: -1px;
+}
+
+.navbar-form .input-group > .form-control {
+   width: 19.53125vw;
+}
+
+
+
+
+@media(max-width: 1193px) {
+
+.navbar-search{
+    width: 19.53vw;
+    height: 2.125rem;
+    margin-top: 1.188rem;
+    margin-bottom: 1.188rem;
+  margin-left: 3.046875vw;
+    &__text{
+        font-family: "Helvetica Neue" sans-serif;
+        font-size: 0.875rem;
+        font-weight: 400;
+        padding-left: 1rem;
+    }
+}
+
+.navbar-logo{
+    width: 5.546875vw;
+    height: 1.25rem;
+    margin-top: 1.625rem;
+    margin-bottom: 1.625rem;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+}
+
+.input-group-btn:last-child > .form-control-style__button{
+    z-index: 2;
+    margin-left: -1px;
+}
+
+.navbar-form .input-group > .form-control {
+    width: 19.53125vw;
+     
+}
+
+.navbar-brand-logo{
+    height: 4rem;
+    width: 4rem;
+    text-align: center;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    vertical-align: center;
+
+}
+
+.navbar-brand-logo-display{
+   display:none;
+}
+
+
+
+
+@media(max-width: 768px) {
+
+
+
+ .navbar-form .input-group > .form-control {
+     width: 30vw;
+  }
+
+  
+  .navbar-logo-display{
+    display: none;
+}
+
+.navbar-form-display{
+    display: none;
+}
+
+.navbar-form-collapse-display{
+    display: block;
+}
+
+
+.navbar-content-division-display{
+    display: block;
+}
+
+.navbar-collapse-background{
+   background-color: #f5f8ff;
+   height: calc(100vh - 4.5rem);
+   width: 100vw;
+   text-align: center;
+    z-index: 2;
+}
+
+.form-control-style-collapse{
+    border: none;
+    background-color: transparent;
+    margin-left: calc( (100vw - 12rem) / 2);
+}
+
+
+
+
+
+
+.navbar-search{
+        background: linear-gradient(to bottom, rgba(255,255,255,0),rgba(255,255,255,0)), url('../../img/searchIconCollapse.svg') no-repeat left center; 
+        background-size: 0.875rem 2.188rem; 
+        background-position: 1.313rem;
+        padding-left: 3.375rem;
+        width: 12rem;
+        border-bottom: 1px solid #BDBDBD;
+}
+
+
+.navbar-brand-logo-display{
+   display:inline;
+}
+
+.navbar-button{
+
+    margin-right: 0rem;
+    &__bell{
+        margin-right: 0rem;
+    }
+}
+
+.dropdown-font{
+    line-height: 3rem;
+}
+  
+
+  
+
+}
+
+
+

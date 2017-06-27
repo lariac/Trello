@@ -1,0 +1,49 @@
+.home-login{
+    padding: 2rem 1rem 4rem;
+    text-align: center;
+    background: #026aa7;
+    color: white;
+    height: 89vh;
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.777rem;
+    line-height: 1.2rem;
+    margin-top: 1.6rem;
+}
+
+b, strong, h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+div h1:first-child, div h2:first-child, div h3:first-child, div h4:first-child, div h5:first-child, div h6:first-child {
+    margin-top: 14rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25;
+    margin: 1.3rem 0;
+    display: block;
+}
+
+.home-login .login-form {
+    width: 430px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.login-form {
+    width: 430px;
+}
+
+@media only screen and (min-width: 900px){
+
+    .home-login-wrappper {
+        margin: 0 auto;
+        max-width: 81.25rem;
+    }
+}

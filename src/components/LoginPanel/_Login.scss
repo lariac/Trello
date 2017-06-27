@@ -1,0 +1,231 @@
+html{
+    font-size: 16px;
+}
+
+.loginWrapper{
+    margin: 0rem 3.8125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height:100vh;
+}
+
+.loginContent{
+   
+  //    margin: 0rem 4.69vw;
+
+    &__trelloLogo {
+        img{
+      //  margin-top: 8.625rem;
+      //  margin-top: 16.65vh;
+        width: 8.9375rem;
+    //    width: 26,88vw;
+        height: 2.5625rem;
+    //    height: 4.95vh;
+        }
+    }
+}
+
+
+.col-md-5.noPadding{
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.userInformation{
+    margin-top: 8.75rem;
+  //      margin-top: 16.89vh;
+   
+
+    &__userName{
+        margin-top: 0rem;
+        display: block;  
+        height: 2.8125rem;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('../../img/username.svg') no-repeat left center; 
+        background-size: 0.875rem 2.188rem; 
+        background-position: 1.313rem;
+        padding-left: 3.375rem;
+        
+
+        color: #9fa3a7;
+        font-family: "Helvetica Neue" sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.688rem;
+
+    };
+    &__email{
+        margin-top:1.875rem;
+        display: block;  
+        height: 2.8125rem;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('../../img/username.svg') no-repeat left center; 
+        background-size: 0.875rem 2.188rem; 
+        background-position: 1.313rem;
+        padding-left: 3.375rem;
+        
+        color: #9fa3a7;
+        font-family: "Helvetica Neue" sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.688rem;
+
+    };
+    &__password{
+        margin-top:1.875rem;
+        display: block;
+        height: 2.8125rem;
+
+        background: linear-gradient(to bottom, rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('../../img/password.svg') no-repeat left center;
+        background-size: 0.75rem 2.188rem;
+        background-position:  1.313rem;
+        padding-left: 3.375rem;
+        color: #9fa3a7;
+        font-family: "Helvetica Neue" sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.688rem;
+    };
+    &__logIn{
+        margin-top:1.875rem;
+       // margin-top:3.62vh;
+        display: block;
+        width:100%;
+        height: 3.125rem;
+
+        box-shadow: -0.5rem 0.8125rem 1.313rem rgba(10, 51, 137, 0.27);
+        border-radius: 8px;
+        background-color: #4e88ff;
+ //       height: 6.03vh;
+      //  width: 30.703125vw;
+    //   box-shadow: -5px 15px 5px 0px #E6E6E6;
+
+    
+    }
+}
+
+.fontLogin{
+   color: #ffffff;
+       font-family: Montserrat sans-serif;;
+        font-size:  0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align:center;
+}
+
+.userNameInput{
+    margin-top: 0rem;
+}
+
+
+.homeImage{
+    background-image: url('../../img/Home.png');
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: 100% 100vh;
+  //  background-size: cover;
+ //   width: 2vw;
+ //   background-size: 700vw 500vh;
+//height: 100vh;
+//width: 100%;
+}
+
+.divisionLine{
+ /*   border-left: 1rem solid black;
+    height: 0.1rem;
+    margin-top: 5rem; */
+   // stroke: #82868b;
+  //  stroke:red;
+
+    stroke: #82868b;
+    stroke-width: 0.04rem;
+    opacity:0.5;
+  
+} 
+
+.font{
+    //margin-top: 0.5rem;
+    //margin: 0 2.03125vw;
+ //   margin:2.33750156vw; 
+ //   width: 3.13749688vw;
+ //width: 2.4063375vw;
+
+
+// width: 2.4063375vw;
+
+ //width: 1.063rem;
+
+ text-align:center;
+ //margin: 0 2.23445625vw;
+ // margin-top: 7.35826297vh;
+
+  margin-top: 3.75rem;
+  width:17.6%;
+
+  color: #82868b;
+font-family: "Helvetica Neue" sans-serif;
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.688rem;
+text-transform: uppercase;
+
+ // margin-top: 3.813rem;
+}
+
+.left-division-line{
+   // width: 14.6875vw;
+  //  width: 12.65612vw;
+
+   // width: 10.5rem;
+  //  height: 6.08vh; //CALCULADO 
+  //  margin-right:  2.23445625vw;
+
+     // width: 10.56rem;
+      width:41.2%;
+        height: 2.7rem;
+     // margin-right:  1.688rem;
+
+}
+
+.right-division-line{
+   // width: 14.6875vw;
+  //  width: 12.65612vw;
+ //  height: 6.08vh; //CALCULADO 
+ //   margin-left: 2.23445625vw;
+
+//    width: 10.06rem;
+ //   height: 3.125rem;
+//    margin-left: 1.75rem;
+
+      width:41.2%;
+      height: 2.7rem;
+    //  margin-left:  1.688rem;
+  
+}
+
+
+.newAccount{
+    color: #4e88ff;
+   // font-size: 1.5681544vh;
+    text-align: center;
+  //  font-weight: bold;
+    margin-top: 4.063rem;
+
+    color: #4e88ff;
+    font-family: "Helvetica Neue" sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.625rem;
+}
+
+.newAccount:hover{
+    //color: pink;
+}
+
+.col-md-7.noPadding{
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+
+
+

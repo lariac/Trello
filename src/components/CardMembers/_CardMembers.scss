@@ -1,0 +1,16 @@
+.card-members-style{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #e24789;
+    text-align: center;
+    margin-right: 0.625rem;
+    &__font{
+        color: #fffefe;
+        font-family: "Open Sans" sans-serif;
+        font-size: 0.625rem;
+        font-weight: 700;
+        line-height: 1.375rem;
+        text-transform: uppercase;
+    }
+}
+

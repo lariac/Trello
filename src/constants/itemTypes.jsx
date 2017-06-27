@@ -1,0 +1,2 @@
+export default {BOARD: 'board'}
+
